@@ -35,8 +35,8 @@ jobs:
     })
 
     remove.forEach(f => {
-      tlog("Deleting {{filename}}...", f)
-      io.rm(f.canonicalPath)
+      //tlog("Deleting {{filename}}...", f)
+      //io.rm(f.canonicalPath)
     })
 
     var version = $from(Object.keys(versions).map(r=>({v:r}))).attach("l", r => r.v.length).sort("l").at(0).v
