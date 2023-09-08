@@ -38,4 +38,4 @@ jobs:
       tlog("Deleting {{filename}}...", f)
     })
 
-    tprint("::set-output name=version::" + Object.keys(versions)[0])
+    io.writeFileString("version=" + Object.keys(versions)[0], getEnv("GITHUB_OUTPUT"), __, true)
