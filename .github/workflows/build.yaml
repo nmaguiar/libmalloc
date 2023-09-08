@@ -38,6 +38,42 @@ on  :
   #      default    : 'some value'
 
 jobs:
+  # ============
+  buildAlpineJE:
+    runs-on: ubuntu-latest 
+    permissions:
+      contents     : write
+      pull-requests: write
+
+    steps  :
+    - name: Cache OpenAF runtime
+      uses: actions/cache@v3
+      with:
+        key : oaf-t8
+        path: /tmp/oaf
+
+    # --------------
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    # -----------
+    - name: Build
+      uses: openaf/ojob-action@v4
+      env :
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        ojob: build.yaml
+        args: 'op=buildAlpineJE arch=amd64'
+        dist: t8
+
+    # --------------------
+    - name: Upload output
+      uses: actions/upload-artifact@v2
+      with:
+        name: libjemalloc_alpine_x64.tgz
+        path: buildAlpineJE
+
+  # ============
   buildAlpineTC:
     runs-on: ubuntu-latest 
     permissions:
@@ -45,11 +81,6 @@ jobs:
       pull-requests: write
 
     steps  :
-    ## To use an input, if defined, just refer to ${{ github.event.inputs.inputOne }}
-
-    ## This action will cache the OpenAF runtime used by openaf/ojob-action to avoid reinstalling 
-    ## everytime the action is invoked. It should be cleared manually from time to time in order
-    ## to use a more updated runtime.
     # --------------------------
     - name: Cache OpenAF runtime
       uses: actions/cache@v3
@@ -60,10 +91,6 @@ jobs:
     # --------------
     - name: Checkout
       uses: actions/checkout@v3
-    
-
-    ## Add here other steps
-    ## If you used workflow_run you can access ${{ github.event.workflow }} and ${{ github.event.workflow_run.conclusion }}
 
     # -----------
     - name: Build
@@ -72,12 +99,47 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         ojob: build.yaml
-        args: 'op=buildAlpineJE'
+        args: 'op=buildAlpineTC arch=amd64'
         dist: t8
 
     # --------------------
     - name: Upload output
       uses: actions/upload-artifact@v2
       with:
-        name: libjemalloc_alpine_x64.tgz
+        name: libtcmalloc_alpine_x64.tgz
+        path: buildAlpineTC 
+    
+  # ================
+  buildAlpineJE_ARM:
+    runs-on: ubuntu-latest 
+    permissions:
+      contents     : write
+      pull-requests: write
+
+    steps  :
+    - name: Cache OpenAF runtime
+      uses: actions/cache@v3
+      with:
+        key : oaf-t8
+        path: /tmp/oaf
+
+    # --------------
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    # -----------
+    - name: Build
+      uses: openaf/ojob-action@v4
+      env :
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        ojob: build.yaml
+        args: 'op=buildAlpineJE arch=arm64'
+        dist: t8
+
+    # --------------------
+    - name: Upload output
+      uses: actions/upload-artifact@v2
+      with:
+        name: libjemalloc_alpine_aarch64.tgz
         path: buildAlpineJE
