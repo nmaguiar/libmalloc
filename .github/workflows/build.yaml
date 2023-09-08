@@ -68,7 +68,7 @@ jobs:
 
     # --------------------
     - name: Upload output
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: libjemalloc_alpine_x64.tgz
         path: buildAlpineJE
@@ -104,7 +104,7 @@ jobs:
 
     # --------------------
     - name: Upload output
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: libtcmalloc_alpine_x64.tgz
         path: buildAlpineTC 
@@ -139,7 +139,7 @@ jobs:
 
     # --------------------
     - name: Upload output
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: libjemalloc_oracle8_x64.tgz
         path: buildOracle8JE
@@ -174,7 +174,7 @@ jobs:
 
     # --------------------
     - name: Upload output
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: libtcmalloc_oracle8_x64.tgz
         path: buildOracle8TC
@@ -209,7 +209,7 @@ jobs:
 
     # --------------------
     - name: Upload output
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: libjemalloc_oracle9_x64.tgz
         path: buildOracle9JE
@@ -244,7 +244,7 @@ jobs:
 
     # --------------------
     - name: Upload output
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: libtcmalloc_oracle9_x64.tgz
         path: buildOracle9TC
@@ -279,7 +279,7 @@ jobs:
 
     # --------------------
     - name: Upload output
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: libjemalloc_ubi8_x64.tgz
         path: buildUBI8JE
@@ -314,7 +314,7 @@ jobs:
 
     # --------------------
     - name: Upload output
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: libtcmalloc_oracle9_x64.tgz
         path: buildUBI8TC
@@ -349,7 +349,7 @@ jobs:
 
     # --------------------
     - name: Upload output
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: libjemalloc_ubi9_x64.tgz
         path: buildUBIJE
@@ -384,7 +384,7 @@ jobs:
 
     # --------------------
     - name: Upload output
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: libtcmalloc_ubi9_x64.tgz
         path: buildUBI8TC
