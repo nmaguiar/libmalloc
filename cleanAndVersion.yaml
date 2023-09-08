@@ -23,22 +23,24 @@ jobs:
     in:
       path: isString
   exec : |
-    var remove = [], versions = {}
+    var remove = [], version = ""
 
     io.listFiles(args.path).files.forEach(f => {
-      var _p = f.filename.match(/((\d\.?)+)$/)
-      if (_p) {
-        versions[_p[0]]= 1
-      } else {
-        remove.push(f)
+      try {
+        if (f.filename.indexOf("jemalloc") > 0) {
+          var _v = $sh("strings " + f.filepath + " | grep 'JEMALLOC_VERSION \"'").get(0).stdout
+          version = _v.match(/((\d\.?)+)/)[0]
+        } else {
+          var _version = f.filename.match(/((\d\.?)+)/)[0]
+          if (_version.length > version.length) version = _version
+        }
+      } catch(e) {
       }
     })
 
     remove.forEach(f => {
-      //tlog("Deleting {{filename}}...", f)
-      //io.rm(f.canonicalPath)
+      tlog("Deleting {{filename}}...", f)
     })
 
-    var version = $from(Object.keys(versions).map(r=>({v:r}))).attach("l", r => r.v.length).sort("l").at(0).v
     log("Adding version=" + version + " in '" + getEnv("GITHUB_OUTPUT") + "'...")
     io.writeFileString("version=" + version, getEnv("GITHUB_OUTPUT"), __, true)
