@@ -68,7 +68,7 @@ jobs:
 
     # -----------------------
     - name: Clean and version
-      id  : version
+      id  : versionAlpineJE
       uses: openaf/ojob-action@v4
       env :
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -81,7 +81,7 @@ jobs:
     - name: Upload output
       uses: actions/upload-artifact@v3
       with:
-        name: "libjemalloc_${{ steps.version.outputs.version }}_alpine_x64.tgz"
+        name: "libjemalloc_${{ steps.versionAlpineJE.outputs.version }}_alpine_x64.tgz"
         path: buildAlpineJE
 
   # ============
