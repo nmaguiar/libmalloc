@@ -38,4 +38,5 @@ jobs:
       tlog("Deleting {{filename}}...", f)
     })
 
+    log("Adding version=" + Object.keys(versions)[0] + " in '" + getEnv("GITHUB_OUTPUT") + "'...")
     io.writeFileString("version=" + Object.keys(versions)[0], getEnv("GITHUB_OUTPUT"), __, true)
