@@ -69,9 +69,9 @@ todo:
     - Build UBI JE
     buildUBITC   :
     - Build UBI TC
-    buildUBIJE8  :
+    buildUBI8JE  :
     - Build UBI 8 JE
-    buildUBITC8  :
+    buildUBI8TC  :
     - Build UBI 8 TC
     buildAlpineJE:
     - Build Alpine JE
