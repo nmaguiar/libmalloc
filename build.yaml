@@ -7,7 +7,7 @@ help:
     example  : buildUBITC
     mandatory: true
   - name     : arch
-    desc     : The architecture to build with (e.g. amd64, arm64)
+    desc     : The architecture to build with (e.g. amd64, arm64v8)
     example  : amd64
     mandatory: false
   - name     : output

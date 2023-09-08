@@ -1,0 +1,41 @@
+# Author: Nuno Aguiar
+help:
+  text   : GitHub step to delete extra build files and capture the version.
+  expects: 
+  - name     : path
+    desc     : The build output
+    mandatory: true
+
+todo:
+- Clean up and get version
+
+ojob:
+  opacks      :
+  - openaf: 20230704
+  catch       : printErrnl("[" + job.name + "] "); if (isDef(exception.javaException)) exception.javaException.printStackTrace(); else printErr(exception)
+  logToConsole: true   # to change when finished
+        
+
+jobs:
+# -------------------------------
+- name : Clean up and get version
+  check:
+    in:
+      path: isString
+  exec : |
+    var remove = [], versions = {}
+
+    io.listFiles(args.path).files.forEach(f => {
+      var _p = f.filename.match(/((\d\.?)+)$/)
+      if (_p && _p[0].indexOf(".") > 0) {
+        versions[_p[0]]= 1
+      } else {
+        remove.push(f)
+      }
+    })
+
+    remove.forEach(f => {
+      tlog("Deleting {{filename}}...", f)
+    })
+
+    tprint("::set-output name=version::" + Object.keys(versions)[0])

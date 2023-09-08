@@ -66,11 +66,22 @@ jobs:
         args: 'op=buildAlpineJE arch=amd64'
         dist: t8
 
-    # --------------------
+    # -----------------------
+    - name: Clean and version
+      id  : version
+      uses: openaf/ojob-action@v4
+      env :
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        ojob: cleanAndVersion.yaml
+        args: 'path=buildAlpineJE'
+        dist: t8
+
+    # -------------------
     - name: Upload output
       uses: actions/upload-artifact@v3
       with:
-        name: libjemalloc_alpine_x64.tgz
+        name: libjemalloc_${{ steps.version.outputs.version }}_alpine_x64.tgz
         path: buildAlpineJE
 
   # ============
