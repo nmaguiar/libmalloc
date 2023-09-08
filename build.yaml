@@ -45,7 +45,7 @@ init:
 
   ubi:
     imageTC: registry.access.redhat.com/ubi9/ubi-minimal
-    buildTC: microdnf install -y --nodocs autoconf automake libtool make gcc g++ git && git clone https://github.com/gperftools/gperftools && cd gperftools && sh autogen.sh && sh configure && make
+    buildTC: microdnf install -y --nodocs autoconf automake libtool make gcc gcc-c++ git && git clone https://github.com/gperftools/gperftools && cd gperftools && sh autogen.sh && sh configure && make
     copyTC : mkdir /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && cp .libs/libtcmalloc*.so* /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}
     
     imageJE: registry.access.redhat.com/ubi9/ubi-minimal
@@ -54,7 +54,7 @@ init:
 
   ubi8:
     imageTC: registry.access.redhat.com/ubi8/ubi-minimal
-    buildTC: microdnf install -y --nodocs autoconf automake libtool make gcc g++ git && git clone https://github.com/gperftools/gperftools && cd gperftools && sh autogen.sh && sh configure && make
+    buildTC: microdnf install -y --nodocs autoconf automake libtool make gcc gcc-c++ git && git clone https://github.com/gperftools/gperftools && cd gperftools && sh autogen.sh && sh configure && make
     copyTC : mkdir /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && cp .libs/libtcmalloc*.so* /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}
     
     imageJE: registry.access.redhat.com/ubi8/ubi-minimal
