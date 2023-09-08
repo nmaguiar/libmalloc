@@ -43,4 +43,4 @@ jobs:
     })
 
     log("Adding version=" + version + " in '" + getEnv("GITHUB_OUTPUT") + "'...")
-    io.writeFileString("version=" + version, getEnv("GITHUB_OUTPUT"), __, true)
+    io.writeFileString("version=" + version + "\n", getEnv("GITHUB_OUTPUT"), __, true)
