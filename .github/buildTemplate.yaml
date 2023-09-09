@@ -1,0 +1,190 @@
+# For use with  ojob ojob.io/template/apply data=buildTemplate.yaml
+template: &TEMPLATE |
+  name: Builds
+
+  on  :
+    ## Comment the entries below you won't be needing
+    #  (and double-check if you repo uses 'main' or 'master')
+    #push        :
+      #branches:
+      #- main
+      #paths:
+      #- 'xyz/**'
+      #paths-ignore:
+      #- '.github/**'
+    #pull_request:
+      #branches:
+      #- main
+      #paths:
+      #- 'xyz/**'
+      #paths-ignore:
+      #- '.github/**'
+    #schedule    :
+    #- cron: '30 6 * * *'
+
+    ## Uncomment and adapt the following lines to trigger the action upon complete of another
+    ##
+    #workflow_run:
+    #  workflows:
+    #    - 'main.yml'
+    #  types:
+    #    - completed
+
+    workflow_dispatch:
+    ## Uncomment the following lines if you need to provide specific inputs
+    ##
+    #  inputs:
+    #    inputOne:
+    #      description: 'Sample input to use'
+    #      required   : true
+    #      default    : 'some value'
+
+  jobs:
+    {{#each targets}}
+    # ============
+    {{name}}{{arch}}:
+      runs-on: ubuntu-latest 
+      permissions:
+        contents     : write
+        pull-requests: write
+
+      steps  :
+      - name: Cache OpenAF runtime
+        uses: actions/cache@v3
+        with:
+          key : oaf-t8
+          path: /tmp/oaf
+
+      # --------------
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      {{#$is arch 'arm64'}}
+      # -----------------
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+      {{/$is}}
+
+      # -----------
+      - name: Build
+        uses: openaf/ojob-action@v4
+        env :
+          GITHUB_TOKEN: $\{{ secrets.GITHUB_TOKEN }}
+        with:
+          ojob: build.yaml
+          args: 'op={{name}} arch={{arch}}'
+          dist: t8
+
+      # -----------------------
+      - name: Clean and version
+        uses: openaf/ojob-action@v4
+        env :
+          GITHUB_TOKEN: $\{{ secrets.GITHUB_TOKEN }}
+        with:
+          ojob: cleanAndVersion.yaml
+          args: 'path={{name}}'
+          dist: t8
+
+      # -------------------
+      - name: Upload output
+        uses: actions/upload-artifact@v3
+        with:
+          name: libjemalloc-$\{{ env.version }}_{{suffix}}.tgz
+          path: {{name}}
+
+    {{/each}}
+
+data:
+  _template: *TEMPLATE
+  _file    : workflows/build.yaml
+
+  targets  :
+  - name  : buildUBIJE
+    prefix: libjemalloc
+    suffix: ubi9-x64
+    arch  : amd64
+  - name  : buildUBIJE
+    prefix: libjemalloc
+    suffix: ubi9-aarch64
+    arch  : arm64
+
+  - name  : buildUBITC
+    prefix: libtcmalloc
+    suffix: ubi9-x64
+    arch  : amd64
+  - name  : buildUBITC
+    prefix: libjemalloc
+    suffix: ubi9-aarch64
+    arch  : arm64
+
+  - name  : buildUBI8JE
+    prefix: libjemalloc
+    suffix: ubi8-x64
+    arch  : amd64
+  - name  : buildUBI8JE
+    prefix: libjemalloc
+    suffix: ubi8-aarch64
+    arch  : arm64
+
+  - name  : buildUBI8TC
+    prefix: libtcmalloc
+    suffix: ubi8-x64
+    arch  : amd64
+  - name  : buildUBI8TC
+    prefix: libtcmalloc
+    suffix: ubi8-aarch64
+    arch  : arm64
+
+  - name  : buildAlpineJE
+    prefix: libjemalloc
+    suffix: alpine-x64
+    arch  : amd64
+  - name  : buildAlpineJE
+    prefix: libjemalloc
+    suffix: alpine-aarch64
+    arch  : arm64    
+
+  - name  : buildAlpineTC
+    prefix: libtcmalloc
+    suffix: alpine-x64
+    arch  : amd64
+  - name  : buildAlpineTC
+    prefix: libtcmalloc
+    suffix: alpine-aarch64
+    arch  : arm64    
+
+  - name  : buildOracle8JE
+    prefix: libjemalloc
+    suffix: oracle8-x64
+    arch  : amd64
+  - name  : buildOracle8JE
+    prefix: libjemalloc
+    suffix: oracle8-aarch64
+    arch  : arm64
+
+  - name  : buildOracle8TC
+    prefix: libtcmalloc
+    suffix: oracle8-x64
+    arch  : amd64
+  - name  : buildOracle8TC
+    prefix: libtcmalloc
+    suffix: oracle8-aarch64
+    arch  : arm64
+
+  - name  : buildOracle9JE
+    prefix: libjemalloc
+    suffix: oracle9-x64
+    arch  : amd64
+  - name  : buildOracle9JE
+    prefix: libjemalloc
+    suffix: oracle9-aarch64
+    arch  : arm64
+
+  - name  : buildOracle9TC
+    prefix: libtcmalloc
+    suffix: oracle9-x64
+    arch  : amd64
+  - name  : buildOracle9TC
+    prefix: libtcmalloc
+    suffix: oracle9-aarch64
+    arch  : arm64
