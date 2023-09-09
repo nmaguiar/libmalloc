@@ -42,6 +42,6 @@ jobs:
       tlog("Deleting {{filename}}...", f)
     })
 
-    log("Adding version=" + version + " in '" + getEnv("GITHUB_OUTPUT") + "'...")
-    io.writeFileString("version=" + version + "\n", getEnv("GITHUB_OUTPUT"), __, true)
-    print("::set-output name=version::version=" + version)
+    log("Adding version=" + version + " in '" + getEnv("GTIHUB_ENV") + "'...")
+    io.writeFileString("version=" + version + "\n", getEnv("GTIHUB_ENV"), __, true)
+    //print("::set-output name=version::version=" + version)

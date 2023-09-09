@@ -68,7 +68,6 @@ jobs:
 
     # -----------------------
     - name: Clean and version
-      id  : versionAlpineJE
       uses: openaf/ojob-action@v4
       env :
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -81,7 +80,7 @@ jobs:
     - name: Upload output
       uses: actions/upload-artifact@v3
       with:
-        name: libjemalloc-${{ steps.versionAlpineJE.outputs.version }}_alpine_x64.tgz
+        name: libjemalloc-${{ env.version }}_alpine_x64.tgz
         path: buildAlpineJE
 
   # ============
@@ -115,7 +114,6 @@ jobs:
 
     # -----------------------
     - name: Clean and version
-      id  : versionAlpineTC
       uses: openaf/ojob-action@v4
       env :
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -128,7 +126,7 @@ jobs:
     - name: Upload output
       uses: actions/upload-artifact@v3
       with:
-        name: "libtcmalloc-${{ steps.versionAlpineTC.outputs.version }}_alpine_x64.tgz"
+        name: "libtcmalloc-${{ env.version }}_alpine_x64.tgz"
         path: buildAlpineTC 
     
   # ================
