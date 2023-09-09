@@ -428,6 +428,10 @@ jobs:
     # --------------
     - name: Checkout
       uses: actions/checkout@v3
+  
+    # -----------------
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v1
 
     # -----------
     - name: Build
@@ -475,6 +479,10 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
 
+    # -----------------
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v1
+
     # -----------
     - name: Build
       uses: openaf/ojob-action@v4
@@ -520,6 +528,10 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
 
+    # -----------------
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v1
+
     # -----------
     - name: Build
       uses: openaf/ojob-action@v4
@@ -554,6 +566,10 @@ jobs:
     # --------------
     - name: Checkout
       uses: actions/checkout@v3
+
+    # -----------------
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v1
 
     # -----------
     - name: Build
@@ -590,6 +606,10 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
 
+    # -----------------
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v1
+
     # -----------
     - name: Build
       uses: openaf/ojob-action@v4
@@ -624,6 +644,10 @@ jobs:
     # --------------
     - name: Checkout
       uses: actions/checkout@v3
+
+    # -----------------
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v1
 
     # -----------
     - name: Build
@@ -660,6 +684,10 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
 
+    # -----------------
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v1
+
     # -----------
     - name: Build
       uses: openaf/ojob-action@v4
@@ -694,6 +722,10 @@ jobs:
     # --------------
     - name: Checkout
       uses: actions/checkout@v3
+
+    # -----------------
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v1
 
     # -----------
     - name: Build
@@ -730,6 +762,10 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
 
+    # -----------------
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v1
+
     # -----------
     - name: Build
       uses: openaf/ojob-action@v4
@@ -764,6 +800,10 @@ jobs:
     # --------------
     - name: Checkout
       uses: actions/checkout@v3
+
+    # -----------------
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v1
 
     # -----------
     - name: Build
