@@ -153,9 +153,9 @@ jobs:
 - name: Build UBI 9 JE
   from:
   - (pass    ):
-      image  : "{{init.ubi.imageJE}}"
-      cmd    : "{{{init.ubi.buildJE}}}"
-      copyCmd: "{{{$t init.ubi.copyJE this}}}"
+      image  : "{{init.ubi9.imageJE}}"
+      cmd    : "{{{init.ubi9.buildJE}}}"
+      copyCmd: "{{{$t init.ubi9.copyJE this}}}"
   - Build lib
   args:
     name: buildUBI9JE
@@ -175,9 +175,9 @@ jobs:
 - name: Build UBI 9 TC
   from:
   - (pass    ):
-      image  : "{{init.ubi.imageTC}}"
-      cmd    : "{{{init.ubi.buildTC}}}"
-      copyCmd: "{{{$t init.ubi.copyTC this}}}"
+      image  : "{{init.ubi9.imageTC}}"
+      cmd    : "{{{init.ubi9.buildTC}}}"
+      copyCmd: "{{{$t init.ubi9.copyTC this}}}"
   - Build lib
   args:
     name: buildUBI9TC
