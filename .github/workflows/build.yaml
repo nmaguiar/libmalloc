@@ -81,7 +81,7 @@ jobs:
     - name: Upload output
       uses: actions/upload-artifact@v3
       with:
-        name: libjemalloc-${{ env.version }}-redhat9-x64.tgz
+        name: libjemalloc-${{ env.version }}-redhat9-x64
         path: buildUBI9JE
 
   # ============
@@ -130,7 +130,7 @@ jobs:
     - name: Upload output
       uses: actions/upload-artifact@v3
       with:
-        name: libjemalloc-${{ env.version }}-redhat9-aarch64.tgz
+        name: libjemalloc-${{ env.version }}-redhat9-aarch64
         path: buildUBI9JE
 
   # ============
@@ -176,7 +176,7 @@ jobs:
     - name: Upload output
       uses: actions/upload-artifact@v3
       with:
-        name: libtcmalloc-${{ env.version }}-redhat9-x64.tgz
+        name: libtcmalloc-${{ env.version }}-redhat9-x64
         path: buildUBI9TC
 
   # ============
@@ -225,7 +225,7 @@ jobs:
     - name: Upload output
       uses: actions/upload-artifact@v3
       with:
-        name: libtcmalloc-${{ env.version }}-redhat9-aarch64.tgz
+        name: libtcmalloc-${{ env.version }}-redhat9-aarch64
         path: buildUBI9TC
 
   # ============
@@ -271,7 +271,7 @@ jobs:
     - name: Upload output
       uses: actions/upload-artifact@v3
       with:
-        name: libjemalloc-${{ env.version }}-redhat8-x64.tgz
+        name: libjemalloc-${{ env.version }}-redhat8-x64
         path: buildUBI8JE
 
   # ============
@@ -320,7 +320,7 @@ jobs:
     - name: Upload output
       uses: actions/upload-artifact@v3
       with:
-        name: libjemalloc-${{ env.version }}-redhat8-aarch64.tgz
+        name: libjemalloc-${{ env.version }}-redhat8-aarch64
         path: buildUBI8JE
 
   # ============
@@ -366,7 +366,7 @@ jobs:
     - name: Upload output
       uses: actions/upload-artifact@v3
       with:
-        name: libtcmalloc-${{ env.version }}-redhat8-x64.tgz
+        name: libtcmalloc-${{ env.version }}-redhat8-x64
         path: buildUBI8TC
 
   # ============
@@ -415,7 +415,7 @@ jobs:
     - name: Upload output
       uses: actions/upload-artifact@v3
       with:
-        name: libtcmalloc-${{ env.version }}-redhat8-aarch64.tgz
+        name: libtcmalloc-${{ env.version }}-redhat8-aarch64
         path: buildUBI8TC
 
   # ============
@@ -461,7 +461,7 @@ jobs:
     - name: Upload output
       uses: actions/upload-artifact@v3
       with:
-        name: libjemalloc-${{ env.version }}-alpine-x64.tgz
+        name: libjemalloc-${{ env.version }}-alpine-x64
         path: buildAlpineJE
 
   # ============
@@ -510,7 +510,7 @@ jobs:
     - name: Upload output
       uses: actions/upload-artifact@v3
       with:
-        name: libjemalloc-${{ env.version }}-alpine-aarch64.tgz
+        name: libjemalloc-${{ env.version }}-alpine-aarch64
         path: buildAlpineJE
 
   # ============
@@ -556,7 +556,7 @@ jobs:
     - name: Upload output
       uses: actions/upload-artifact@v3
       with:
-        name: libtcmalloc-${{ env.version }}-alpine-x64.tgz
+        name: libtcmalloc-${{ env.version }}-alpine-x64
         path: buildAlpineTC
 
   # ============
@@ -605,7 +605,7 @@ jobs:
     - name: Upload output
       uses: actions/upload-artifact@v3
       with:
-        name: libtcmalloc-${{ env.version }}-alpine-aarch64.tgz
+        name: libtcmalloc-${{ env.version }}-alpine-aarch64
         path: buildAlpineTC
 
 

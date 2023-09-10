@@ -89,7 +89,7 @@ template: &TEMPLATE |
       - name: Upload output
         uses: actions/upload-artifact@v3
         with:
-          name: {{prefix}}-$\{{ env.version }}-{{suffix}}.tgz
+          name: {{prefix}}-$\{{ env.version }}-{{suffix}}
           path: {{name}}
 
     {{/each}}
