@@ -39,6 +39,386 @@ on  :
 
 jobs:
   # ============
+  buildUBI9JEamd64:
+    runs-on: ubuntu-latest 
+    permissions:
+      contents     : write
+      pull-requests: write
+
+    steps  :
+    - name: Cache OpenAF runtime
+      uses: actions/cache@v3
+      with:
+        key : oaf-t8
+        path: /tmp/oaf
+
+    # --------------
+    - name: Checkout
+      uses: actions/checkout@v3
+
+
+    # -----------
+    - name: Build
+      uses: openaf/ojob-action@v4
+      env :
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        ojob: build.yaml
+        args: 'op=buildUBI9JE arch=amd64'
+        dist: t8
+
+    # -----------------------
+    - name: Clean and version
+      uses: openaf/ojob-action@v4
+      env :
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        ojob: cleanAndVersion.yaml
+        args: 'path=buildUBI9JE'
+        dist: t8
+
+    # -------------------
+    - name: Upload output
+      uses: actions/upload-artifact@v3
+      with:
+        name: libjemalloc-${{ env.version }}-redhat9-x64.tgz
+        path: buildUBI9JE
+
+  # ============
+  buildUBI9JEarm64:
+    runs-on: ubuntu-latest 
+    permissions:
+      contents     : write
+      pull-requests: write
+
+    steps  :
+    - name: Cache OpenAF runtime
+      uses: actions/cache@v3
+      with:
+        key : oaf-t8
+        path: /tmp/oaf
+
+    # --------------
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    # -----------------
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v2
+
+    # -----------
+    - name: Build
+      uses: openaf/ojob-action@v4
+      env :
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        ojob: build.yaml
+        args: 'op=buildUBI9JE arch=arm64'
+        dist: t8
+
+    # -----------------------
+    - name: Clean and version
+      uses: openaf/ojob-action@v4
+      env :
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        ojob: cleanAndVersion.yaml
+        args: 'path=buildUBI9JE'
+        dist: t8
+
+    # -------------------
+    - name: Upload output
+      uses: actions/upload-artifact@v3
+      with:
+        name: libjemalloc-${{ env.version }}-redhat9-aarch64.tgz
+        path: buildUBI9JE
+
+  # ============
+  buildUBI9TCamd64:
+    runs-on: ubuntu-latest 
+    permissions:
+      contents     : write
+      pull-requests: write
+
+    steps  :
+    - name: Cache OpenAF runtime
+      uses: actions/cache@v3
+      with:
+        key : oaf-t8
+        path: /tmp/oaf
+
+    # --------------
+    - name: Checkout
+      uses: actions/checkout@v3
+
+
+    # -----------
+    - name: Build
+      uses: openaf/ojob-action@v4
+      env :
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        ojob: build.yaml
+        args: 'op=buildUBI9TC arch=amd64'
+        dist: t8
+
+    # -----------------------
+    - name: Clean and version
+      uses: openaf/ojob-action@v4
+      env :
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        ojob: cleanAndVersion.yaml
+        args: 'path=buildUBI9TC'
+        dist: t8
+
+    # -------------------
+    - name: Upload output
+      uses: actions/upload-artifact@v3
+      with:
+        name: libtcmalloc-${{ env.version }}-redhat9-x64.tgz
+        path: buildUBI9TC
+
+  # ============
+  buildUBI9TCarm64:
+    runs-on: ubuntu-latest 
+    permissions:
+      contents     : write
+      pull-requests: write
+
+    steps  :
+    - name: Cache OpenAF runtime
+      uses: actions/cache@v3
+      with:
+        key : oaf-t8
+        path: /tmp/oaf
+
+    # --------------
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    # -----------------
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v2
+
+    # -----------
+    - name: Build
+      uses: openaf/ojob-action@v4
+      env :
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        ojob: build.yaml
+        args: 'op=buildUBI9TC arch=arm64'
+        dist: t8
+
+    # -----------------------
+    - name: Clean and version
+      uses: openaf/ojob-action@v4
+      env :
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        ojob: cleanAndVersion.yaml
+        args: 'path=buildUBI9TC'
+        dist: t8
+
+    # -------------------
+    - name: Upload output
+      uses: actions/upload-artifact@v3
+      with:
+        name: libtcmalloc-${{ env.version }}-redhat9-aarch64.tgz
+        path: buildUBI9TC
+
+  # ============
+  buildUBI8JEamd64:
+    runs-on: ubuntu-latest 
+    permissions:
+      contents     : write
+      pull-requests: write
+
+    steps  :
+    - name: Cache OpenAF runtime
+      uses: actions/cache@v3
+      with:
+        key : oaf-t8
+        path: /tmp/oaf
+
+    # --------------
+    - name: Checkout
+      uses: actions/checkout@v3
+
+
+    # -----------
+    - name: Build
+      uses: openaf/ojob-action@v4
+      env :
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        ojob: build.yaml
+        args: 'op=buildUBI8JE arch=amd64'
+        dist: t8
+
+    # -----------------------
+    - name: Clean and version
+      uses: openaf/ojob-action@v4
+      env :
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        ojob: cleanAndVersion.yaml
+        args: 'path=buildUBI8JE'
+        dist: t8
+
+    # -------------------
+    - name: Upload output
+      uses: actions/upload-artifact@v3
+      with:
+        name: libjemalloc-${{ env.version }}-redhat8-x64.tgz
+        path: buildUBI8JE
+
+  # ============
+  buildUBI8JEarm64:
+    runs-on: ubuntu-latest 
+    permissions:
+      contents     : write
+      pull-requests: write
+
+    steps  :
+    - name: Cache OpenAF runtime
+      uses: actions/cache@v3
+      with:
+        key : oaf-t8
+        path: /tmp/oaf
+
+    # --------------
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    # -----------------
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v2
+
+    # -----------
+    - name: Build
+      uses: openaf/ojob-action@v4
+      env :
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        ojob: build.yaml
+        args: 'op=buildUBI8JE arch=arm64'
+        dist: t8
+
+    # -----------------------
+    - name: Clean and version
+      uses: openaf/ojob-action@v4
+      env :
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        ojob: cleanAndVersion.yaml
+        args: 'path=buildUBI8JE'
+        dist: t8
+
+    # -------------------
+    - name: Upload output
+      uses: actions/upload-artifact@v3
+      with:
+        name: libjemalloc-${{ env.version }}-redhat8-aarch64.tgz
+        path: buildUBI8JE
+
+  # ============
+  buildUBI8TCamd64:
+    runs-on: ubuntu-latest 
+    permissions:
+      contents     : write
+      pull-requests: write
+
+    steps  :
+    - name: Cache OpenAF runtime
+      uses: actions/cache@v3
+      with:
+        key : oaf-t8
+        path: /tmp/oaf
+
+    # --------------
+    - name: Checkout
+      uses: actions/checkout@v3
+
+
+    # -----------
+    - name: Build
+      uses: openaf/ojob-action@v4
+      env :
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        ojob: build.yaml
+        args: 'op=buildUBI8TC arch=amd64'
+        dist: t8
+
+    # -----------------------
+    - name: Clean and version
+      uses: openaf/ojob-action@v4
+      env :
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        ojob: cleanAndVersion.yaml
+        args: 'path=buildUBI8TC'
+        dist: t8
+
+    # -------------------
+    - name: Upload output
+      uses: actions/upload-artifact@v3
+      with:
+        name: libtcmalloc-${{ env.version }}-redhat8-x64.tgz
+        path: buildUBI8TC
+
+  # ============
+  buildUBI8TCarm64:
+    runs-on: ubuntu-latest 
+    permissions:
+      contents     : write
+      pull-requests: write
+
+    steps  :
+    - name: Cache OpenAF runtime
+      uses: actions/cache@v3
+      with:
+        key : oaf-t8
+        path: /tmp/oaf
+
+    # --------------
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    # -----------------
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v2
+
+    # -----------
+    - name: Build
+      uses: openaf/ojob-action@v4
+      env :
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        ojob: build.yaml
+        args: 'op=buildUBI8TC arch=arm64'
+        dist: t8
+
+    # -----------------------
+    - name: Clean and version
+      uses: openaf/ojob-action@v4
+      env :
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        ojob: cleanAndVersion.yaml
+        args: 'path=buildUBI8TC'
+        dist: t8
+
+    # -------------------
+    - name: Upload output
+      uses: actions/upload-artifact@v3
+      with:
+        name: libtcmalloc-${{ env.version }}-redhat8-aarch64.tgz
+        path: buildUBI8TC
+
+  # ============
   buildAlpineJEamd64:
     runs-on: ubuntu-latest 
     permissions:
@@ -82,6 +462,55 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: libjemalloc-${{ env.version }}-alpine-x64.tgz
+        path: buildAlpineJE
+
+  # ============
+  buildAlpineJEarm64:
+    runs-on: ubuntu-latest 
+    permissions:
+      contents     : write
+      pull-requests: write
+
+    steps  :
+    - name: Cache OpenAF runtime
+      uses: actions/cache@v3
+      with:
+        key : oaf-t8
+        path: /tmp/oaf
+
+    # --------------
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    # -----------------
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v2
+
+    # -----------
+    - name: Build
+      uses: openaf/ojob-action@v4
+      env :
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        ojob: build.yaml
+        args: 'op=buildAlpineJE arch=arm64'
+        dist: t8
+
+    # -----------------------
+    - name: Clean and version
+      uses: openaf/ojob-action@v4
+      env :
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        ojob: cleanAndVersion.yaml
+        args: 'path=buildAlpineJE'
+        dist: t8
+
+    # -------------------
+    - name: Upload output
+      uses: actions/upload-artifact@v3
+      with:
+        name: libjemalloc-${{ env.version }}-alpine-aarch64.tgz
         path: buildAlpineJE
 
   # ============
@@ -130,14 +559,83 @@ jobs:
         name: libtcmalloc-${{ env.version }}-alpine-x64.tgz
         path: buildAlpineTC
 
+  # ============
+  buildAlpineTCarm64:
+    runs-on: ubuntu-latest 
+    permissions:
+      contents     : write
+      pull-requests: write
+
+    steps  :
+    - name: Cache OpenAF runtime
+      uses: actions/cache@v3
+      with:
+        key : oaf-t8
+        path: /tmp/oaf
+
+    # --------------
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    # -----------------
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v2
+
+    # -----------
+    - name: Build
+      uses: openaf/ojob-action@v4
+      env :
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        ojob: build.yaml
+        args: 'op=buildAlpineTC arch=arm64'
+        dist: t8
+
+    # -----------------------
+    - name: Clean and version
+      uses: openaf/ojob-action@v4
+      env :
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        ojob: cleanAndVersion.yaml
+        args: 'path=buildAlpineTC'
+        dist: t8
+
+    # -------------------
+    - name: Upload output
+      uses: actions/upload-artifact@v3
+      with:
+        name: libtcmalloc-${{ env.version }}-alpine-aarch64.tgz
+        path: buildAlpineTC
+
 
   # release:
   # # ====================
   # - needs:
   #   
+  #   - buildUBI9JEamd64
+  #   
+  #   - buildUBI9JEarm64
+  #   
+  #   - buildUBI9TCamd64
+  #   
+  #   - buildUBI9TCarm64
+  #   
+  #   - buildUBI8JEamd64
+  #   
+  #   - buildUBI8JEarm64
+  #   
+  #   - buildUBI8TCamd64
+  #   
+  #   - buildUBI8TCarm64
+  #   
   #   - buildAlpineJEamd64
   #   
+  #   - buildAlpineJEarm64
+  #   
   #   - buildAlpineTCamd64
+  #   
+  #   - buildAlpineTCarm64
   #   
   #   runs-on: ubuntu-latest 
   #   permissions:
