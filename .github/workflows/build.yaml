@@ -131,6 +131,7 @@ jobs:
         path: buildAlpineTC
 
 
+  release:
   # ====================
   - name: Create release
     needs:
