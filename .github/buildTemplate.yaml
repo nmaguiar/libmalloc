@@ -96,8 +96,7 @@ template: &TEMPLATE |
 
     release:
     # ====================
-    - name: Create release
-      needs:
+    - needs:
       {{#each targets}}
       - {{name}}{{arch}}
       {{/each}}

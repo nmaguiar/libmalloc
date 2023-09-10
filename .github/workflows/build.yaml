@@ -133,8 +133,7 @@ jobs:
 
   release:
   # ====================
-  - name: Create release
-    needs:
+  - needs:
     - buildAlpineJEamd64
     - buildAlpineTCamd64
     runs-on: ubuntu-latest 
