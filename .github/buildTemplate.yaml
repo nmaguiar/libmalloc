@@ -94,22 +94,22 @@ template: &TEMPLATE |
 
     {{/each}}
 
-    release:
-    # ====================
-    - needs:
-      {{#each targets}}
-      - {{name}}{{arch}}
-      {{/each}}
-      runs-on: ubuntu-latest 
-      permissions:
-        contents     : write
-        pull-requests: write
+    # release:
+    # # ====================
+    # - needs:
+    #   {{#each targets}}
+    #   - {{name}}{{arch}}
+    #   {{/each}}
+    #   runs-on: ubuntu-latest 
+    #   permissions:
+    #     contents     : write
+    #     pull-requests: write
 
-      steps:
-      - name: Download artifacts
-        uses: actions/download-artifact@v3
-        with:
-          name: artifacts
+    #   steps:
+    #   - name: Download artifacts
+    #     uses: actions/download-artifact@v3
+    #     with:
+    #       name: artifacts
 
       # - name: Create release
       #   id  : Create release
@@ -122,9 +122,9 @@ template: &TEMPLATE |
       #     draft: false
       #     prerelease: false 
 
-      - name: List files
-        run : |
-          find .
+      # - name: List files
+      #   run : |
+      #     find .
 
       # - name: Upload Release Asset
       #   id  : upload-release-asset

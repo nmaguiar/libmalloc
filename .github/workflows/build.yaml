@@ -131,21 +131,24 @@ jobs:
         path: buildAlpineTC
 
 
-  release:
-  # ====================
-  - needs:
-    - buildAlpineJEamd64
-    - buildAlpineTCamd64
-    runs-on: ubuntu-latest 
-    permissions:
-      contents     : write
-      pull-requests: write
+  # release:
+  # # ====================
+  # - needs:
+  #   
+  #   - buildAlpineJEamd64
+  #   
+  #   - buildAlpineTCamd64
+  #   
+  #   runs-on: ubuntu-latest 
+  #   permissions:
+  #     contents     : write
+  #     pull-requests: write
 
-    steps:
-    - name: Download artifacts
-      uses: actions/download-artifact@v3
-      with:
-        name: artifacts
+  #   steps:
+  #   - name: Download artifacts
+  #     uses: actions/download-artifact@v3
+  #     with:
+  #       name: artifacts
 
     # - name: Create release
     #   id  : Create release
@@ -158,9 +161,9 @@ jobs:
     #     draft: false
     #     prerelease: false 
 
-    - name: List files
-      run : |
-        find .
+    # - name: List files
+    #   run : |
+    #     find .
 
     # - name: Upload Release Asset
     #   id  : upload-release-asset
