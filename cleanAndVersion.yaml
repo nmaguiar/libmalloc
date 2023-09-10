@@ -44,7 +44,7 @@ jobs:
         remove.push(mem[ar[1]])
         mem[ar[1]] = ar[0]
       } else {
-        remove.push(ar[0])
+        if (mem[ar[1]] != ar[0]) remove.push(ar[0])
       }
     })
 
