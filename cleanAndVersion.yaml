@@ -23,9 +23,10 @@ jobs:
     in:
       path: isString
   exec : |
-    var remove = [], version = ""
+    var remove = [], version = "", mem = {}
 
     io.listFiles(args.path).files.forEach(f => {
+      // Determining version
       try {
         if (f.filename.indexOf("jemalloc") > 0) {
           var _v = $sh("strings " + f.filepath + " | grep 'JEMALLOC_VERSION \"'").get(0).stdout
@@ -36,10 +37,20 @@ jobs:
         }
       } catch(e) {
       }
+
+      var ar = f.filepath.match(/^(.+)\.so(.*)$/)
+      if (isUnDef(mem[ar[1]])) mem[ar[1]] = ar[0]
+      if (mem[ar[1]].length < ar[0].length) {
+        remove.push(mem[ar[1]])
+        mem[ar[1]] = ar[0]
+      } else {
+        remove.push(ar[0])
+      }
     })
 
     remove.forEach(f => {
-      tlog("Deleting {{filename}}...", f)
+      tlog("Deleting {{this}}...", f)
+      io.rm(f)
     })
 
     log("Adding version=" + version + " in '" + getEnv("GITHUB_ENV") + "'...")

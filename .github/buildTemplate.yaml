@@ -1,4 +1,4 @@
-# For use with  ojob ojob.io/template/apply data=buildTemplate.yaml
+# For use with ojob buildTemplate.yaml
 template: &TEMPLATE |
   name: Builds
 
