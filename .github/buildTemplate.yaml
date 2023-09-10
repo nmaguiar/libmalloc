@@ -89,102 +89,107 @@ template: &TEMPLATE |
       - name: Upload output
         uses: actions/upload-artifact@v3
         with:
-          name: libjemalloc-$\{{ env.version }}_{{suffix}}.tgz
+          name: {{prefix}}-$\{{ env.version }}-{{suffix}}.tgz
           path: {{name}}
 
     {{/each}}
 
-data:
-  _template: *TEMPLATE
-  _file    : workflows/build.yaml
+ojob:
+  logToConsole: false
 
-  targets  :
-  - name  : buildUBIJE
-    prefix: libjemalloc
-    suffix: ubi9-x64
-    arch  : amd64
-  - name  : buildUBIJE
-    prefix: libjemalloc
-    suffix: ubi9-aarch64
-    arch  : arm64
+todo:
+- (print       ): 👷 Generating 'build.yaml'...
+- (template    ): *TEMPLATE
+  ((outputFile)): workflows/build.yaml
+  ((data      )):
+    targets  :
+    - name  : buildUBI9JE
+      prefix: libjemalloc
+      suffix: redhat9-x64
+      arch  : amd64
+    - name  : buildUBI9JE
+      prefix: libjemalloc
+      suffix: redhat9-aarch64
+      arch  : arm64
 
-  - name  : buildUBITC
-    prefix: libtcmalloc
-    suffix: ubi9-x64
-    arch  : amd64
-  - name  : buildUBITC
-    prefix: libjemalloc
-    suffix: ubi9-aarch64
-    arch  : arm64
+    - name  : buildUBI9TC
+      prefix: libtcmalloc
+      suffix: redhat9-x64
+      arch  : amd64
+    - name  : buildUBI9TC
+      prefix: libtcmalloc
+      suffix: redhat9-aarch64
+      arch  : arm64
 
-  - name  : buildUBI8JE
-    prefix: libjemalloc
-    suffix: ubi8-x64
-    arch  : amd64
-  - name  : buildUBI8JE
-    prefix: libjemalloc
-    suffix: ubi8-aarch64
-    arch  : arm64
+    - name  : buildUBI8JE
+      prefix: libjemalloc
+      suffix: redhat8-x64
+      arch  : amd64
+    - name  : buildUBI8JE
+      prefix: libjemalloc
+      suffix: redhat8-aarch64
+      arch  : arm64
 
-  - name  : buildUBI8TC
-    prefix: libtcmalloc
-    suffix: ubi8-x64
-    arch  : amd64
-  - name  : buildUBI8TC
-    prefix: libtcmalloc
-    suffix: ubi8-aarch64
-    arch  : arm64
+    - name  : buildUBI8TC
+      prefix: libtcmalloc
+      suffix: redhat8-x64
+      arch  : amd64
+    - name  : buildUBI8TC
+      prefix: libtcmalloc
+      suffix: redhat8-aarch64
+      arch  : arm64
 
-  - name  : buildAlpineJE
-    prefix: libjemalloc
-    suffix: alpine-x64
-    arch  : amd64
-  - name  : buildAlpineJE
-    prefix: libjemalloc
-    suffix: alpine-aarch64
-    arch  : arm64    
+    - name  : buildAlpineJE
+      prefix: libjemalloc
+      suffix: alpine-x64
+      arch  : amd64
+    - name  : buildAlpineJE
+      prefix: libjemalloc
+      suffix: alpine-aarch64
+      arch  : arm64    
 
-  - name  : buildAlpineTC
-    prefix: libtcmalloc
-    suffix: alpine-x64
-    arch  : amd64
-  - name  : buildAlpineTC
-    prefix: libtcmalloc
-    suffix: alpine-aarch64
-    arch  : arm64    
+    - name  : buildAlpineTC
+      prefix: libtcmalloc
+      suffix: alpine-x64
+      arch  : amd64
+    - name  : buildAlpineTC
+      prefix: libtcmalloc
+      suffix: alpine-aarch64
+      arch  : arm64    
 
-  - name  : buildOracle8JE
-    prefix: libjemalloc
-    suffix: oracle8-x64
-    arch  : amd64
-  - name  : buildOracle8JE
-    prefix: libjemalloc
-    suffix: oracle8-aarch64
-    arch  : arm64
+    # - name  : buildOracle8JE
+    #   prefix: libjemalloc
+    #   suffix: oracle8-x64
+    #   arch  : amd64
+    # - name  : buildOracle8JE
+    #   prefix: libjemalloc
+    #   suffix: oracle8-aarch64
+    #   arch  : arm64
 
-  - name  : buildOracle8TC
-    prefix: libtcmalloc
-    suffix: oracle8-x64
-    arch  : amd64
-  - name  : buildOracle8TC
-    prefix: libtcmalloc
-    suffix: oracle8-aarch64
-    arch  : arm64
+    # - name  : buildOracle8TC
+    #   prefix: libtcmalloc
+    #   suffix: oracle8-x64
+    #   arch  : amd64
+    # - name  : buildOracle8TC
+    #   prefix: libtcmalloc
+    #   suffix: oracle8-aarch64
+    #   arch  : arm64
 
-  - name  : buildOracle9JE
-    prefix: libjemalloc
-    suffix: oracle9-x64
-    arch  : amd64
-  - name  : buildOracle9JE
-    prefix: libjemalloc
-    suffix: oracle9-aarch64
-    arch  : arm64
+    # - name  : buildOracle9JE
+    #   prefix: libjemalloc
+    #   suffix: oracle9-x64
+    #   arch  : amd64
+    # - name  : buildOracle9JE
+    #   prefix: libjemalloc
+    #   suffix: oracle9-aarch64
+    #   arch  : arm64
 
-  - name  : buildOracle9TC
-    prefix: libtcmalloc
-    suffix: oracle9-x64
-    arch  : amd64
-  - name  : buildOracle9TC
-    prefix: libtcmalloc
-    suffix: oracle9-aarch64
-    arch  : arm64
+    # - name  : buildOracle9TC
+    #   prefix: libtcmalloc
+    #   suffix: oracle9-x64
+    #   arch  : amd64
+    # - name  : buildOracle9TC
+    #   prefix: libtcmalloc
+    #   suffix: oracle9-aarch64
+    #   arch  : arm64
+- (print       ): ✅ File 'build.yaml' generated.

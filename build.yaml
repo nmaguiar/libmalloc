@@ -43,7 +43,7 @@ init:
     buildJE: yum update && yum install -y -q autoconf automake libtool gcc make git && git clone https://github.com/jemalloc/jemalloc && cd jemalloc && sh autogen.sh && sh configure && make
     copyJE : mkdir /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && cp -a lib/*.so* /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && chmod a+rw /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}
 
-  ubi:
+  ubi9:
     imageTC: registry.access.redhat.com/ubi9/ubi-minimal
     buildTC: microdnf install -y --nodocs autoconf automake libtool make gcc gcc-c++ git && git clone https://github.com/gperftools/gperftools && cd gperftools && sh autogen.sh && sh configure && make
     copyTC : mkdir /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && cp -a .libs/libtcmalloc*.so* /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && chmod a+rw /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}
@@ -65,10 +65,10 @@ todo:
 - Check for docker
 - (optionOn   ): op
   ((todos    )): 
-    buildUBIJE   :
-    - Build UBI JE
-    buildUBITC   :
-    - Build UBI TC
+    buildUBI9JE   :
+    - Build UBI 9 JE
+    buildUBI9TC   :
+    - Build UBI 9 TC
     buildUBI8JE  :
     - Build UBI 8 JE
     buildUBI8TC  :
@@ -150,7 +150,7 @@ jobs:
     name: buildOracle9JE
 
 # ------------------
-- name: Build UBI JE
+- name: Build UBI 9 JE
   from:
   - (pass    ):
       image  : "{{init.ubi.imageJE}}"
@@ -158,7 +158,7 @@ jobs:
       copyCmd: "{{{$t init.ubi.copyJE this}}}"
   - Build lib
   args:
-    name: buildUBIJE
+    name: buildUBI9JE
 
 # --------------------
 - name: Build UBI 8 JE
@@ -172,7 +172,7 @@ jobs:
     name: buildUBI8JE
 
 # ------------------
-- name: Build UBI TC
+- name: Build UBI 9 TC
   from:
   - (pass    ):
       image  : "{{init.ubi.imageTC}}"
@@ -180,7 +180,7 @@ jobs:
       copyCmd: "{{{$t init.ubi.copyTC this}}}"
   - Build lib
   args:
-    name: buildUBITC
+    name: buildUBI9TC
 
 # --------------------
 - name: Build UBI 8 TC
