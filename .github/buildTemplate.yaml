@@ -143,19 +143,19 @@ todo:
       prefix: libjemalloc
       suffix: alpine-x64
       arch  : amd64
-    - name  : buildAlpineJE
-      prefix: libjemalloc
-      suffix: alpine-aarch64
-      arch  : arm64    
+    # - name  : buildAlpineJE
+    #   prefix: libjemalloc
+    #   suffix: alpine-aarch64
+    #   arch  : arm64    
 
     - name  : buildAlpineTC
       prefix: libtcmalloc
       suffix: alpine-x64
       arch  : amd64
-    - name  : buildAlpineTC
-      prefix: libtcmalloc
-      suffix: alpine-aarch64
-      arch  : arm64    
+    # - name  : buildAlpineTC
+    #   prefix: libtcmalloc
+    #   suffix: alpine-aarch64
+    #   arch  : arm64    
 
     # - name  : buildOracle8JE
     #   prefix: libjemalloc
