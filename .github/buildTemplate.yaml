@@ -116,7 +116,7 @@ template: &TEMPLATE |
         with:
           dist  : t8
           script: |
-            $sh("find . -maxdepth 1 -type d -exec tar czvf {}.tar.gz {} \;")
+            $sh("find . -maxdepth 1 -type d -exec tar czvf {}.tar.gz {} \\;")
             .prefix("create")
             .get()
 
