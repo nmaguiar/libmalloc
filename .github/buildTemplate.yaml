@@ -162,19 +162,37 @@ todo:
     #   suffix: redhat9-aarch64
     #   arch  : arm64
 
-    # - name  : buildUBI8JE
+    - name  : buildUbuntuJE
+      prefix: libjemalloc
+      suffix: debian-x64
+      arch  : amd64
+    # - name  : buildUbuntuJE
     #   prefix: libjemalloc
-    #   suffix: redhat8-x64
-    #   arch  : amd64
+    #   suffix: redhat8-aarch64
+    #   arch  : arm64
+
+    - name  : buildUbuntuTC
+      prefix: libtcmalloc
+      suffix: debian-x64
+      arch  : amd64
+    # - name  : buildUbuntuTC
+    #   prefix: libtcmalloc
+    #   suffix: redhat8-aarch64
+    #   arch  : arm64
+
+    - name  : buildUBI8JE
+      prefix: libjemalloc
+      suffix: redhat8-x64
+      arch  : amd64
     # - name  : buildUBI8JE
     #   prefix: libjemalloc
     #   suffix: redhat8-aarch64
     #   arch  : arm64
 
-    # - name  : buildUBI8TC
-    #   prefix: libtcmalloc
-    #   suffix: redhat8-x64
-    #   arch  : amd64
+    - name  : buildUBI8TC
+      prefix: libtcmalloc
+      suffix: redhat8-x64
+      arch  : amd64
     # - name  : buildUBI8TC
     #   prefix: libtcmalloc
     #   suffix: redhat8-aarch64

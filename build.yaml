@@ -61,6 +61,15 @@ init:
     buildJE: microdnf install -y --nodocs autoconf automake libtool make gcc git && git clone https://github.com/jemalloc/jemalloc && cd jemalloc && sh autogen.sh && sh configure && make
     copyJE : mkdir /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && cp -a lib/*.so* /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && chmod a+rw /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}
 
+  ubuntu:
+    imageTC: ubuntu:bionic
+    buildTC: apt-get update && apt-get install -y autoconf automake libtool make gcc g++ git && git clone https://github.com/gperftools/gperftools && cd gperftools && sh autogen.sh && sh configure && make
+    copyTC : mkdir /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && cp -a .libs/libtcmalloc*.so* /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && chmod a+rw /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}
+    
+    imageJE: ubuntu:bionic
+    buildJE: apt-get update && apt-get install -y autoconf automake libtool make gcc git && git clone https://github.com/jemalloc/jemalloc && cd jemalloc && sh autogen.sh && sh configure && make
+    copyJE : mkdir /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && cp -a lib/*.so* /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && chmod a+rw /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}
+
 todo:
 - Check for docker
 - (optionOn   ): op
@@ -85,9 +94,14 @@ todo:
     - Build Oracle 9 TC
     buildOracle9JE:
     - Build Oracle 9 JE
+    buildUbuntuTC:
+    - Build Ubuntu TC
+    buildUbuntuJE:
+    - Build Ubuntu JE
 
 include:
 - ojob.io/docker/_common
+- ojob.yaml
 
 ojob:
   opacks      :
@@ -104,6 +118,28 @@ jobs:
   exec: |
     rm -rf {{name}}
     docker run --rm -i -v `pwd`:/output {{#if arch}}--platform linux/{{arch}}{{/if}} {{image}} /bin/sh -c "{{{cmd}}} && {{{copyCmd}}}"
+
+# ---------------------
+- name: Build Ubuntu TC
+  from:
+  - (pass    ):
+      image  : "{{init.ubuntu.imageTC}}"
+      cmd    : "{{{init.ubuntu.buildTC}}}"
+      copyCmd: "{{{$t init.ubuntu.copyTC this}}}"
+  - Build lib
+  args:
+    name: buildUbuntuTC
+
+# ---------------------
+- name: Build Ubuntu JE
+  from:
+  - (pass    ):
+      image  : "{{init.ubuntu.imageJE}}"
+      cmd    : "{{{init.ubuntu.buildJE}}}"
+      copyCmd: "{{{$t init.ubuntu.copyJE this}}}"
+  - Build lib
+  args:
+    name: buildUbuntuJE
 
 # -----------------------
 - name: Build Oracle 8 TC
