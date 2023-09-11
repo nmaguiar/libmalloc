@@ -120,7 +120,7 @@ template: &TEMPLATE |
             .prefix("create")
             .get()
 
-            $sh("gh release create 0.1.0 ./*.tgz -d -t \"Release 0.1.0\"")
+            $sh("gh release create 0.1.0  -d -t \"Release 0.1.0\" " + io.listFilenames(".").filter(f => f.lastIndexOf(".tar.gz")>0).join(" "))
             .prefix("gh")
             .get()
 
