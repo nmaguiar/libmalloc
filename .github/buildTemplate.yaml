@@ -115,7 +115,7 @@ template: &TEMPLATE |
       - name: Create tgz and release them
         uses: openaf/ojob-action@v4
         env :
-          GH_TOKEN: ${{ github.token }}
+          GITHUB_TOKEN: $\{{ secrets.GITHUB_TOKEN }}
         with:
           dist  : t8
           script: |
@@ -124,6 +124,7 @@ template: &TEMPLATE |
             .get()
 
             $sh("gh release create 0.1.0  -d -t \"Release 0.1.0\" " + io.listFilenames(".").filter(f => f.lastIndexOf(".tar.gz")>0).join(" "))
+            .envs
             .prefix("gh")
             .get()
 
