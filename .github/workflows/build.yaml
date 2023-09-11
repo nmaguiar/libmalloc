@@ -158,7 +158,8 @@ jobs:
 
     - name: List files
       run : |
-        find .
+        find . -maxdepth 1 -type d -exec tar czvf {}.tar.gz {} \;
+        ls -lad *.tar.gz
 
     # - name: Upload Release Asset
     #   id  : upload-release-asset
