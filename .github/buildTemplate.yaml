@@ -108,8 +108,6 @@ template: &TEMPLATE |
       steps:
       - name: Download artifacts
         uses: actions/download-artifact@v3
-        with:
-          name: artifacts
 
       # - name: Create release
       #   id  : Create release
