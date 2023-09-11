@@ -136,77 +136,77 @@ todo:
   ((outputFile)): workflows/build.yaml
   ((data      )):
     targets  :
-    # - name  : buildUBI9JE
-    #   prefix: libjemalloc
-    #   suffix: redhat9-x64
-    #   arch  : amd64
-    # - name  : buildUBI9JE
-    #   prefix: libjemalloc
-    #   suffix: redhat9-aarch64
-    #   arch  : arm64
+    - name  : buildUBI9JE
+      prefix: libjemalloc
+      suffix: redhat9-x64
+      arch  : amd64
+    - name  : buildUBI9JE
+      prefix: libjemalloc
+      suffix: redhat9-aarch64
+      arch  : arm64
 
-    # - name  : buildUBI9TC
-    #   prefix: libtcmalloc
-    #   suffix: redhat9-x64
-    #   arch  : amd64
-    # - name  : buildUBI9TC
-    #   prefix: libtcmalloc
-    #   suffix: redhat9-aarch64
-    #   arch  : arm64
+    - name  : buildUBI9TC
+      prefix: libtcmalloc
+      suffix: redhat9-x64
+      arch  : amd64
+    - name  : buildUBI9TC
+      prefix: libtcmalloc
+      suffix: redhat9-aarch64
+      arch  : arm64
 
     - name  : buildUbuntuJE
       prefix: libjemalloc
       suffix: debian-x64
       arch  : amd64
-    # - name  : buildUbuntuJE
-    #   prefix: libjemalloc
-    #   suffix: redhat8-aarch64
-    #   arch  : arm64
+    - name  : buildUbuntuJE
+      prefix: libjemalloc
+      suffix: redhat8-aarch64
+      arch  : arm64
 
     - name  : buildUbuntuTC
       prefix: libtcmalloc
       suffix: debian-x64
       arch  : amd64
-    # - name  : buildUbuntuTC
-    #   prefix: libtcmalloc
-    #   suffix: redhat8-aarch64
-    #   arch  : arm64
+    - name  : buildUbuntuTC
+      prefix: libtcmalloc
+      suffix: redhat8-aarch64
+      arch  : arm64
 
     - name  : buildUBI8JE
       prefix: libjemalloc
       suffix: redhat8-x64
       arch  : amd64
-    # - name  : buildUBI8JE
-    #   prefix: libjemalloc
-    #   suffix: redhat8-aarch64
-    #   arch  : arm64
+    - name  : buildUBI8JE
+      prefix: libjemalloc
+      suffix: redhat8-aarch64
+      arch  : arm64
 
     - name  : buildUBI8TC
       prefix: libtcmalloc
       suffix: redhat8-x64
       arch  : amd64
-    # - name  : buildUBI8TC
-    #   prefix: libtcmalloc
-    #   suffix: redhat8-aarch64
-    #   arch  : arm64
+    - name  : buildUBI8TC
+      prefix: libtcmalloc
+      suffix: redhat8-aarch64
+      arch  : arm64
 
     - name  : buildAlpineJE
       prefix: libjemalloc
       suffix: alpine-x64
       arch  : amd64
-    # - name  : buildAlpineJE
-    #   prefix: libjemalloc
-    #   suffix: alpine-aarch64
-    #   arch  : arm64    
+    - name  : buildAlpineJE
+      prefix: libjemalloc
+      suffix: alpine-aarch64
+      arch  : arm64    
 
     - name  : buildAlpineTC
       prefix: libtcmalloc
       suffix: alpine-x64
       arch  : amd64
-    # - name  : buildAlpineTC
-    #   prefix: libtcmalloc
-    #   suffix: alpine-aarch64
-    #   arch  : arm64    
+    - name  : buildAlpineTC
+      prefix: libtcmalloc
+      suffix: alpine-aarch64
+      arch  : arm64    
 
     # - name  : buildOracle8JE
     #   prefix: libjemalloc
