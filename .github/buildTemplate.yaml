@@ -124,7 +124,6 @@ template: &TEMPLATE |
             .get()
 
             $sh("gh release create 0.1.0  -d -t \"Release 0.1.0\" " + io.listFilenames(".").filter(f => f.lastIndexOf(".tar.gz")>0).join(" "))
-            .envs
             .prefix("gh")
             .get()
 
