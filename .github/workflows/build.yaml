@@ -347,6 +347,6 @@ jobs:
           .prefix("create")
           .get()
 
-          $sh("gh release create 0.1.0  -d -t \"Release 0.1.0\" " + io.listFilenames(".").filter(f => f.lastIndexOf(".tar.gz")>0).join(" "))
+          $sh("gh release create 0.1.0  -d -t \"Release 0.1.0\" " + io.listFilenames(".").filter(f => f.indexOf("lib")>0 && f.lastIndexOf(".tar.gz")>0).join(" "))
           .prefix("gh")
           .get()
