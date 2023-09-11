@@ -609,44 +609,31 @@ jobs:
         path: buildAlpineTC
 
 
-  # release:
-  # # ====================
-  # - needs:
-  #   
-  #   - buildUBI9JEamd64
-  #   
-  #   - buildUBI9JEarm64
-  #   
-  #   - buildUBI9TCamd64
-  #   
-  #   - buildUBI9TCarm64
-  #   
-  #   - buildUBI8JEamd64
-  #   
-  #   - buildUBI8JEarm64
-  #   
-  #   - buildUBI8TCamd64
-  #   
-  #   - buildUBI8TCarm64
-  #   
-  #   - buildAlpineJEamd64
-  #   
-  #   - buildAlpineJEarm64
-  #   
-  #   - buildAlpineTCamd64
-  #   
-  #   - buildAlpineTCarm64
-  #   
-  #   runs-on: ubuntu-latest 
-  #   permissions:
-  #     contents     : write
-  #     pull-requests: write
+  release:
+  # ====================
+    needs:
+    - buildUBI9JEamd64
+    - buildUBI9JEarm64
+    - buildUBI9TCamd64
+    - buildUBI9TCarm64
+    - buildUBI8JEamd64
+    - buildUBI8JEarm64
+    - buildUBI8TCamd64
+    - buildUBI8TCarm64
+    - buildAlpineJEamd64
+    - buildAlpineJEarm64
+    - buildAlpineTCamd64
+    - buildAlpineTCarm64
+    runs-on: ubuntu-latest 
+    permissions:
+      contents     : write
+      pull-requests: write
 
-  #   steps:
-  #   - name: Download artifacts
-  #     uses: actions/download-artifact@v3
-  #     with:
-  #       name: artifacts
+    steps:
+    - name: Download artifacts
+      uses: actions/download-artifact@v3
+      with:
+        name: artifacts
 
     # - name: Create release
     #   id  : Create release
@@ -659,9 +646,9 @@ jobs:
     #     draft: false
     #     prerelease: false 
 
-    # - name: List files
-    #   run : |
-    #     find .
+    - name: List files
+      run : |
+        find .
 
     # - name: Upload Release Asset
     #   id  : upload-release-asset
