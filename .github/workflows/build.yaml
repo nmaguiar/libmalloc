@@ -320,7 +320,7 @@ jobs:
     - name: Upload output
       uses: actions/upload-artifact@v3
       with:
-        name: libjemalloc-${{ env.version }}-redhat8-aarch64
+        name: libjemalloc-${{ env.version }}-debian-aarch64
         path: buildUbuntuJE
 
   # ============
@@ -415,7 +415,7 @@ jobs:
     - name: Upload output
       uses: actions/upload-artifact@v3
       with:
-        name: libtcmalloc-${{ env.version }}-redhat8-aarch64
+        name: libtcmalloc-${{ env.version }}-debian-aarch64
         path: buildUbuntuTC
 
   # ============
@@ -841,6 +841,6 @@ jobs:
           .prefix("create")
           .get()
 
-          $sh("gh release create 0.1.0  -d -t \"Release 0.1.0\" " + io.listFilenames(".").filter(f => f.indexOf("lib")>0 && f.lastIndexOf(".tar.gz")>0).join(" "))
+          $sh("gh release create 0.1.1  -d -t \"Release 0.1.1\" " + io.listFilenames(".").filter(f => f.indexOf("lib")>0 && f.lastIndexOf(".tar.gz")>0).join(" "))
           .prefix("gh")
           .get()

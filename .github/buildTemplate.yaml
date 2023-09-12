@@ -123,7 +123,7 @@ template: &TEMPLATE |
             .prefix("create")
             .get()
 
-            $sh("gh release create 0.1.0  -d -t \"Release 0.1.0\" " + io.listFilenames(".").filter(f => f.indexOf("lib")>0 && f.lastIndexOf(".tar.gz")>0).join(" "))
+            $sh("gh release create 0.1.1  -d -t \"Release 0.1.1\" " + io.listFilenames(".").filter(f => f.indexOf("lib")>0 && f.lastIndexOf(".tar.gz")>0).join(" "))
             .prefix("gh")
             .get()
 
@@ -160,7 +160,7 @@ todo:
       arch  : amd64
     - name  : buildUbuntuJE
       prefix: libjemalloc
-      suffix: redhat8-aarch64
+      suffix: debian-aarch64
       arch  : arm64
 
     - name  : buildUbuntuTC
@@ -169,7 +169,7 @@ todo:
       arch  : amd64
     - name  : buildUbuntuTC
       prefix: libtcmalloc
-      suffix: redhat8-aarch64
+      suffix: debian-aarch64
       arch  : arm64
 
     - name  : buildUBI8JE
