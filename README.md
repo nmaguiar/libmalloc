@@ -6,10 +6,10 @@ Binaries Linux builds of the libtcmalloc and the libjemalloc libraries.
 
 First you will need to choose the appropriate tar.gz to download. List of ditributions and corresponding tar.gz suffix to use:
 
-| Linux distribution | Architecture | Suffix tar.gz |
-|---|---|---|
-| Alpine 3.x | x64 | alpine-x64 |
-| Alpine 3.x | aarch64 | alpine-aarch64 |
+| Linux distribution | Architecture | Suffix tar.gz | Download URL |
+|---|---|---|---|
+| Alpine 3.x | x64 | alpine-x64 | [libjemalloc-5.3.0-alpine-x64.tar.gz](https://github.com/nmaguiar/libmalloc/releases/download/0.1.0/libjemalloc-5.3.0-alpine-x64.tar.gz) |
+| Alpine 3.x | aarch64 | alpine-aarch64 | [libjemalloc-5.3.0-alpine-aarch64.tar.gz](https://github.com/nmaguiar/libmalloc/releases/download/0.1.0/libjemalloc-5.3.0-alpine-aarch64.tar.gz), [libtcmalloc-4.5.14-alpine-aarch64.tar.gz](https://github.com/nmaguiar/libmalloc/releases/download/0.1.0/libtcmalloc-4.5.14-alpine-aarch64.tar.gz) |
 | RHEL 8.x | x64 | redhat8-x64 | 
 | RHEL 8.x | aarch64 | redhat8-aarch64 |
 | RHEL 9.x | x64 | redhat9-x64 |
