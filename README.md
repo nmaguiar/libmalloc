@@ -14,12 +14,12 @@ First you will need to choose the appropriate tar.gz to download. List of ditrib
 | RHEL 8.x | aarch64 | redhat8-aarch64 | [libjemalloc-5.3.0-redhat8-aarch64.tar.gz](https://github.com/nmaguiar/libmalloc/releases/download/0.1.0/libjemalloc-5.3.0-redhat8-aarch64.tar.gz)<br /> [libtcmalloc-4.5.14-redhat8-aarch64.tar.gz](https://github.com/nmaguiar/libmalloc/releases/download/0.1.0/libtcmalloc-4.5.14-redhat8-aarch64.tar.gz)  |
 | RHEL 9.x | x64 | redhat9-x64 | [libjemalloc-5.3.0-redhat9-x64.tar.gz](https://github.com/nmaguiar/libmalloc/releases/download/0.1.0/libjemalloc-5.3.0-redhat9-x64.tar.gz)<br /> [libtcmalloc-4.5.14-redhat9-x64.tar.gz](https://github.com/nmaguiar/libmalloc/releases/download/0.1.0/libtcmalloc-4.5.14-redhat9-x64.tar.gz) |
 | RHEL 9.x | aarch64 | redhat9-aarch64 | [libjemalloc-5.3.0-redhat9-aarch64.tar.gz](https://github.com/nmaguiar/libmalloc/releases/download/0.1.0/libjemalloc-5.3.0-redhat9-aarch64.tar.gz)<br /> [libtcmalloc-4.5.14-redhat9-aarch64.tar.gz](https://github.com/nmaguiar/libmalloc/releases/download/0.1.0/libtcmalloc-4.5.14-redhat9-aarch64.tar.gz)  |
-| Oracle 8.x | x64 | redhat8-x64 | |
-| Oracle 8.x | aarch64 | redhat8-aarch64 | |
-| Oracle 9.x | x64 | redhat9-x64 | |
-| Oracle 9.x | aarch64 | redhat9-aarch64 | |
-| Ubuntu >= Focal | x64 | debian-x64 | |
-| Ubuntu >= Focal | aarch64 | debian-aarch64 | |
+| Oracle 8.x | x64 | redhat8-x64 | [libjemalloc-5.3.0-redhat8-x64.tar.gz](https://github.com/nmaguiar/libmalloc/releases/download/0.1.0/libjemalloc-5.3.0-redhat8-x64.tar.gz)<br /> [libtcmalloc-4.5.14-redhat8-x64.tar.gz](https://github.com/nmaguiar/libmalloc/releases/download/0.1.0/libtcmalloc-4.5.14-redhat8-x64.tar.gz)  |
+| Oracle 8.x | aarch64 | redhat8-aarch64 | [libjemalloc-5.3.0-redhat8-aarch64.tar.gz](https://github.com/nmaguiar/libmalloc/releases/download/0.1.0/libjemalloc-5.3.0-redhat8-aarch64.tar.gz)<br /> [libtcmalloc-4.5.14-redhat8-aarch64.tar.gz](https://github.com/nmaguiar/libmalloc/releases/download/0.1.0/libtcmalloc-4.5.14-redhat8-aarch64.tar.gz) |
+| Oracle 9.x | x64 | redhat9-x64 | [libjemalloc-5.3.0-redhat9-x64.tar.gz](https://github.com/nmaguiar/libmalloc/releases/download/0.1.0/libjemalloc-5.3.0-redhat9-x64.tar.gz)<br /> [libtcmalloc-4.5.14-redhat9-x64.tar.gz](https://github.com/nmaguiar/libmalloc/releases/download/0.1.0/libtcmalloc-4.5.14-redhat9-x64.tar.gz) |
+| Oracle 9.x | aarch64 | redhat9-aarch64 | [libjemalloc-5.3.0-redhat9-aarch64.tar.gz](https://github.com/nmaguiar/libmalloc/releases/download/0.1.0/libjemalloc-5.3.0-redhat9-aarch64.tar.gz)<br /> [libtcmalloc-4.5.14-redhat9-aarch64.tar.gz](https://github.com/nmaguiar/libmalloc/releases/download/0.1.0/libtcmalloc-4.5.14-redhat9-aarch64.tar.gz)  |
+| Ubuntu >= Focal | x64 | debian-x64 | [libjemalloc-5.3.0-debian-x64.tar.gz](https://github.com/nmaguiar/libmalloc/releases/download/0.1.0/libjemalloc-5.3.0-debian-x64.tar.gz)<br /> [libtcmalloc-4.5.14-debian-x64.tar.gz](https://github.com/nmaguiar/libmalloc/releases/download/0.1.0/libtcmalloc-4.5.14-debian-x64.tar.gz) |
+| Ubuntu >= Focal | aarch64 | debian-aarch64 | [libjemalloc-5.3.0-debian-aarch64.tar.gz](https://github.com/nmaguiar/libmalloc/releases/download/0.1.0/libjemalloc-5.3.0-debian-aarch64.tar.gz)<br /> [libtcmalloc-4.5.14-debian-aarch64.tar.gz](https://github.com/nmaguiar/libmalloc/releases/download/0.1.0/libtcmalloc-4.5.14-debian-aarch64.tar.gz) |
 
 ## Usage
 
