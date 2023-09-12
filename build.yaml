@@ -70,6 +70,16 @@ init:
     buildJE: apt-get update && apt-get install -y autoconf automake libtool make gcc git && git clone https://github.com/jemalloc/jemalloc && cd jemalloc && sh autogen.sh && sh configure && make
     copyJE : mkdir /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && cp -a lib/*.so* /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && chmod a+rw /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}
 
+  ubuntuFocal:
+    imageTC: ubuntu:focal
+    buildTC: apt-get update && apt-get install -y autoconf automake libtool make gcc g++ git && git clone https://github.com/gperftools/gperftools && cd gperftools && sh autogen.sh && sh configure && make
+    copyTC : mkdir /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && cp -a .libs/libtcmalloc*.so* /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && chmod a+rw /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}
+    
+    imageJE: ubuntu:focal
+    buildJE: apt-get update && apt-get install -y autoconf automake libtool make gcc git && git clone https://github.com/jemalloc/jemalloc && cd jemalloc && sh autogen.sh && sh configure && make
+    copyJE : mkdir /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && cp -a lib/*.so* /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && chmod a+rw /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}
+
+
 todo:
 - Check for docker
 - (optionOn   ): op
@@ -98,6 +108,10 @@ todo:
     - Build Ubuntu TC
     buildUbuntuJE:
     - Build Ubuntu JE
+    buildUbuntuFocalTC:
+    - Build Ubuntu Focal TC
+    buildUbuntuFocalJE:
+    - Build Ubuntu Focal JE
 
 include:
 - ojob.io/docker/_common
@@ -139,6 +153,28 @@ jobs:
   - Build lib
   args:
     name: buildUbuntuJE
+
+# ---------------------------
+- name: Build Ubuntu Focal TC
+  from:
+  - (pass    ):
+      image  : "{{init.ubuntuFocal.imageTC}}"
+      cmd    : "{{{init.ubuntuFocal.buildTC}}}"
+      copyCmd: "{{{$t init.ubuntuFocal.copyTC this}}}"
+  - Build lib
+  args:
+    name: buildUbuntuFocalTC
+
+# ---------------------------
+- name: Build Ubuntu Focal JE
+  from:
+  - (pass    ):
+      image  : "{{init.ubuntuFocal.imageJE}}"
+      cmd    : "{{{init.ubuntuFocal.buildJE}}}"
+      copyCmd: "{{{$t init.ubuntuFocal.copyJE this}}}"
+  - Build lib
+  args:
+    name: buildUbuntuFocalJE
 
 # -----------------------
 - name: Build Oracle 8 TC
