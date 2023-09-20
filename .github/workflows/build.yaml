@@ -40,7 +40,7 @@ on  :
 jobs:
   # ============
   buildUBI9JEamd64:
-    runs-on: ubuntu-latest 
+    runs-on: ubuntu-latest
     permissions:
       contents     : write
       pull-requests: write
@@ -86,7 +86,7 @@ jobs:
 
   # ============
   buildUBI9JEarm64:
-    runs-on: ubuntu-latest 
+    runs-on: self-hosted
     permissions:
       contents     : write
       pull-requests: write
@@ -135,7 +135,7 @@ jobs:
 
   # ============
   buildUBI9TCamd64:
-    runs-on: ubuntu-latest 
+    runs-on: ubuntu-latest
     permissions:
       contents     : write
       pull-requests: write
@@ -181,7 +181,7 @@ jobs:
 
   # ============
   buildUBI9TCarm64:
-    runs-on: ubuntu-latest 
+    runs-on: self-hosted
     permissions:
       contents     : write
       pull-requests: write
@@ -230,7 +230,7 @@ jobs:
 
   # ============
   buildUbuntuJEamd64:
-    runs-on: ubuntu-latest 
+    runs-on: ubuntu-latest
     permissions:
       contents     : write
       pull-requests: write
@@ -276,7 +276,7 @@ jobs:
 
   # ============
   buildUbuntuJEarm64:
-    runs-on: ubuntu-latest 
+    runs-on: self-hosted
     permissions:
       contents     : write
       pull-requests: write
@@ -325,7 +325,7 @@ jobs:
 
   # ============
   buildUbuntuTCamd64:
-    runs-on: ubuntu-latest 
+    runs-on: ubuntu-latest
     permissions:
       contents     : write
       pull-requests: write
@@ -371,7 +371,7 @@ jobs:
 
   # ============
   buildUbuntuFocalTCarm64:
-    runs-on: ubuntu-latest 
+    runs-on: self-hosted
     permissions:
       contents     : write
       pull-requests: write
@@ -420,7 +420,7 @@ jobs:
 
   # ============
   buildUBI8JEamd64:
-    runs-on: ubuntu-latest 
+    runs-on: ubuntu-latest
     permissions:
       contents     : write
       pull-requests: write
@@ -466,7 +466,7 @@ jobs:
 
   # ============
   buildUBI8JEarm64:
-    runs-on: ubuntu-latest 
+    runs-on: self-hosted
     permissions:
       contents     : write
       pull-requests: write
@@ -515,7 +515,7 @@ jobs:
 
   # ============
   buildUBI8TCamd64:
-    runs-on: ubuntu-latest 
+    runs-on: ubuntu-latest
     permissions:
       contents     : write
       pull-requests: write
@@ -561,7 +561,7 @@ jobs:
 
   # ============
   buildUBI8TCarm64:
-    runs-on: ubuntu-latest 
+    runs-on: self-hosted
     permissions:
       contents     : write
       pull-requests: write
@@ -610,7 +610,7 @@ jobs:
 
   # ============
   buildAlpineJEamd64:
-    runs-on: ubuntu-latest 
+    runs-on: ubuntu-latest
     permissions:
       contents     : write
       pull-requests: write
@@ -656,7 +656,7 @@ jobs:
 
   # ============
   buildAlpineJEarm64:
-    runs-on: ubuntu-latest 
+    runs-on: self-hosted
     permissions:
       contents     : write
       pull-requests: write
@@ -705,7 +705,7 @@ jobs:
 
   # ============
   buildAlpineTCamd64:
-    runs-on: ubuntu-latest 
+    runs-on: ubuntu-latest
     permissions:
       contents     : write
       pull-requests: write
@@ -751,7 +751,7 @@ jobs:
 
   # ============
   buildAlpineTCarm64:
-    runs-on: ubuntu-latest 
+    runs-on: self-hosted
     permissions:
       contents     : write
       pull-requests: write
@@ -798,6 +798,101 @@ jobs:
         name: libtcmalloc-${{ env.version }}-alpine-aarch64
         path: buildAlpineTC
 
+  # ============
+  buildOracle7JEamd64:
+    runs-on: ubuntu-latest
+    permissions:
+      contents     : write
+      pull-requests: write
+
+    steps  :
+    - name: Cache OpenAF runtime
+      uses: actions/cache@v3
+      with:
+        key : oaf-t8
+        path: /tmp/oaf
+
+    # --------------
+    - name: Checkout
+      uses: actions/checkout@v3
+
+
+    # -----------
+    - name: Build
+      uses: openaf/ojob-action@v4
+      env :
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        ojob: build.yaml
+        args: 'op=buildOracle7JE arch=amd64'
+        dist: t8
+
+    # -----------------------
+    - name: Clean and version
+      uses: openaf/ojob-action@v4
+      env :
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        ojob: cleanAndVersion.yaml
+        args: 'path=buildOracle7JE'
+        dist: t8
+
+    # -------------------
+    - name: Upload output
+      uses: actions/upload-artifact@v3
+      with:
+        name: libjemalloc-${{ env.version }}-oracle7-x64
+        path: buildOracle7JE
+
+  # ============
+  buildOracle7JEarm64:
+    runs-on: self-hosted
+    permissions:
+      contents     : write
+      pull-requests: write
+
+    steps  :
+    - name: Cache OpenAF runtime
+      uses: actions/cache@v3
+      with:
+        key : oaf-t8
+        path: /tmp/oaf
+
+    # --------------
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    # -----------------
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v2
+
+    # -----------
+    - name: Build
+      uses: openaf/ojob-action@v4
+      env :
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        ojob: build.yaml
+        args: 'op=buildOracle7JE arch=arm64'
+        dist: t8
+
+    # -----------------------
+    - name: Clean and version
+      uses: openaf/ojob-action@v4
+      env :
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        ojob: cleanAndVersion.yaml
+        args: 'path=buildOracle7JE'
+        dist: t8
+
+    # -------------------
+    - name: Upload output
+      uses: actions/upload-artifact@v3
+      with:
+        name: libjemalloc-${{ env.version }}-oracle7-aarch64
+        path: buildOracle7JE
+
 
   release:
   # ====================
@@ -818,6 +913,8 @@ jobs:
     - buildAlpineJEarm64
     - buildAlpineTCamd64
     - buildAlpineTCarm64
+    - buildOracle7JEamd64
+    - buildOracle7JEarm64
     runs-on: ubuntu-latest 
     permissions:
       contents     : write

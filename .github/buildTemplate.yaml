@@ -43,7 +43,11 @@ template: &TEMPLATE |
     {{#each targets}}
     # ============
     {{name}}{{arch}}:
-      runs-on: ubuntu-latest 
+      {{#$is arch 'arm64'}}
+      runs-on: self-hosted
+      {{else}}
+      runs-on: ubuntu-latest
+      {{/$is}}
       permissions:
         contents     : write
         pull-requests: write
@@ -207,6 +211,24 @@ todo:
       prefix: libtcmalloc
       suffix: alpine-aarch64
       arch  : arm64    
+
+    - name  : buildOracle7JE
+      prefix: libjemalloc
+      suffix: oracle7-x64
+      arch  : amd64
+    - name  : buildOracle7JE
+      prefix: libjemalloc
+      suffix: oracle7-aarch64
+      arch  : arm64
+
+    #- name  : buildOracle7TC
+    #  prefix: libtcmalloc
+    #  suffix: oracle7-x64
+    #  arch  : amd64
+    #- name  : buildOracle7TC
+    #  prefix: libtcmalloc
+    #  suffix: oracle7-aarch64
+    #  arch  : arm64
 
     # - name  : buildOracle8JE
     #   prefix: libjemalloc

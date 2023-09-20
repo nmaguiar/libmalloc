@@ -27,21 +27,30 @@ init:
 
   oracle9:
     imageTC: oraclelinux:9
-    buildTC: yum update && yum install -y -q autoconf automake libtool gcc gcc-c++ git make && git clone https://github.com/gperftools/gperftools && cd gperftools && sh autogen.sh && sh configure && make
+    buildTC: yum -y -q update && yum install -y -q autoconf automake libtool gcc gcc-c++ git make && git clone https://github.com/gperftools/gperftools && cd gperftools && sh autogen.sh && sh configure && make
     copyTC : mkdir /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && cp -a .libs/libtcmalloc*.so* /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && chmod a+rw /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}
       
     imageJE: oraclelinux:9
-    buildJE: yum update && yum install -y -q autoconf automake libtool gcc make git && git clone https://github.com/jemalloc/jemalloc && cd jemalloc && sh autogen.sh && sh configure && make
+    buildJE: yum -y -q update && yum install -y -q autoconf automake libtool gcc make git && git clone https://github.com/jemalloc/jemalloc && cd jemalloc && sh autogen.sh && sh configure && make
     copyJE : mkdir /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && cp -a lib/*.so* /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && chmod a+rw /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}
 
   oracle8:
     imageTC: oraclelinux:8.8
-    buildTC: yum update && yum install -y -q autoconf automake libtool gcc gcc-c++ git make && git clone https://github.com/gperftools/gperftools && cd gperftools && sh autogen.sh && sh configure && make
+    buildTC: yum -y -q update && yum install -y -q autoconf automake libtool gcc gcc-c++ git make && git clone https://github.com/gperftools/gperftools && cd gperftools && sh autogen.sh && sh configure && make
     copyTC : mkdir /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && cp -a .libs/libtcmalloc*.so* /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && chmod a+rw /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}
       
     imageJE: oraclelinux:8.8
-    buildJE: yum update && yum install -y -q autoconf automake libtool gcc make git && git clone https://github.com/jemalloc/jemalloc && cd jemalloc && sh autogen.sh && sh configure && make
+    buildJE: yum -y -q update && yum install -y -q autoconf automake libtool gcc make git && git clone https://github.com/jemalloc/jemalloc && cd jemalloc && sh autogen.sh && sh configure && make
     copyJE : mkdir /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && cp -a lib/*.so* /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && chmod a+rw /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}
+
+  oracle7:
+    imageTC: oraclelinux:7
+    buildTC: yum -y -q update && yum install -y -q autoconf automake libtool gcc gcc-c++ git make file && git clone https://github.com/gperftools/gperftools && cd gperftools && sh autogen.sh && sh configure && make
+    copyTC : mkdir /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && cp -a .libs/libtcmalloc*.so* /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && chmod a+rw /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}
+      
+    imageJE: oraclelinux:7
+    buildJE: yum -y -q update && yum install -y -q autoconf automake libtool gcc make git && git clone https://github.com/jemalloc/jemalloc && cd jemalloc && sh autogen.sh && sh configure && make
+    copyJE : mkdir /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && cp -a lib/*.so* /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && chmod a+rw /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}   
 
   ubi9:
     imageTC: registry.access.redhat.com/ubi9/ubi-minimal
@@ -100,6 +109,10 @@ todo:
     - Build Oracle 8 TC
     buildOracle8JE:
     - Build Oracle 8 JE
+    buildOracle7TC:
+    - Build Oracle 7 TC
+    buildOracle7JE:
+    - Build Oracle 7 JE
     buildOracle9TC:
     - Build Oracle 9 TC
     buildOracle9JE:
@@ -197,6 +210,28 @@ jobs:
   - Build lib
   args:
     name: buildOracle8JE
+
+# -----------------------
+- name: Build Oracle 7 TC
+  from:
+  - (pass    ):
+      image  : "{{init.oracle7.imageTC}}"
+      cmd    : "{{{init.oracle7.buildTC}}}"
+      copyCmd: "{{{$t init.oracle7.copyTC this}}}"
+  - Build lib
+  args:
+    name: buildOracle8TC
+
+# -----------------------
+- name: Build Oracle 7 JE
+  from:
+  - (pass    ):
+      image  : "{{init.oracle7.imageJE}}"
+      cmd    : "{{{init.oracle7.buildJE}}}"
+      copyCmd: "{{{$t init.oracle7.copyJE this}}}"
+  - Build lib
+  args:
+    name: buildOracle7JE
 
 # -----------------------
 - name: Build Oracle 9 TC
