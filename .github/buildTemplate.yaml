@@ -230,23 +230,23 @@ todo:
     #  suffix: oracle7-aarch64
     #  arch  : arm64
 
-    # - name  : buildOracle8JE
-    #   prefix: libjemalloc
-    #   suffix: oracle8-x64
-    #   arch  : amd64
-    # - name  : buildOracle8JE
-    #   prefix: libjemalloc
-    #   suffix: oracle8-aarch64
-    #   arch  : arm64
+    - name  : buildOracle8JE
+      prefix: libjemalloc
+      suffix: oracle8-x64
+      arch  : amd64
+    - name  : buildOracle8JE
+      prefix: libjemalloc
+      suffix: oracle8-aarch64
+      arch  : arm64
 
-    # - name  : buildOracle8TC
-    #   prefix: libtcmalloc
-    #   suffix: oracle8-x64
-    #   arch  : amd64
-    # - name  : buildOracle8TC
-    #   prefix: libtcmalloc
-    #   suffix: oracle8-aarch64
-    #   arch  : arm64
+    - name  : buildOracle8TC
+      prefix: libtcmalloc
+      suffix: oracle8-x64
+      arch  : amd64
+    - name  : buildOracle8TC
+      prefix: libtcmalloc
+      suffix: oracle8-aarch64
+      arch  : arm64
 
     # - name  : buildOracle9JE
     #   prefix: libjemalloc

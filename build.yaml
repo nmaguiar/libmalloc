@@ -36,7 +36,7 @@ init:
 
   oracle8:
     imageTC: oraclelinux:8.8
-    buildTC: yum -y -q update && yum install -y -q autoconf automake libtool gcc gcc-c++ git make && git clone https://github.com/gperftools/gperftools && cd gperftools && sh autogen.sh && sh configure && make
+    buildTC: yum -y -q update && yum install -y -q autoconf automake libtool gcc gcc-c++ git make && git clone https://github.com/gperftools/gperftools && cd gperftools && sh autogen.sh && LDFLAGS="-lpthread" sh configure && make
     copyTC : mkdir /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && cp -a .libs/libtcmalloc*.so* /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && chmod a+rw /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}
       
     imageJE: oraclelinux:8.8
