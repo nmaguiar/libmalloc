@@ -70,6 +70,15 @@ init:
     buildJE: microdnf install -y --nodocs autoconf automake libtool make gcc git && git clone https://github.com/jemalloc/jemalloc && cd jemalloc && sh autogen.sh && sh configure && make
     copyJE : mkdir /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && cp -a lib/*.so* /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && chmod a+rw /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}
 
+  ubi7:
+    imageTC: registry.access.redhat.com/ubi7/ubi-minimal
+    buildTC: microdnf install -y --nodocs autoconf automake libtool make gcc gcc-c++ git patch && git clone https://github.com/gperftools/gperftools && cd gperftools && sh autogen.sh && sh configure && make
+    copyTC : mkdir /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && cp -a .libs/libtcmalloc*.so* /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && chmod a+rw /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}
+    
+    imageJE: registry.access.redhat.com/ubi7/ubi-minimal
+    buildJE: microdnf install -y --nodocs autoconf automake libtool make gcc git && git clone https://github.com/jemalloc/jemalloc && cd jemalloc && sh autogen.sh && sh configure && make
+    copyJE : mkdir /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && cp -a lib/*.so* /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && chmod a+rw /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}
+
   ubuntu:
     imageTC: ubuntu:bionic
     buildTC: apt-get update && apt-get install -y autoconf automake libtool make gcc g++ git && git clone https://github.com/gperftools/gperftools && cd gperftools && sh autogen.sh && sh configure && make
@@ -101,6 +110,8 @@ todo:
     - Build UBI 8 JE
     buildUBI8TC  :
     - Build UBI 8 TC
+    buildUBI7JE  :
+    - Build UBI 7 JE
     buildAlpineJE:
     - Build Alpine JE
     buildAlpineTC:
