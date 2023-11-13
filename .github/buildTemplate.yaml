@@ -185,6 +185,15 @@ todo:
       suffix: redhat8-aarch64
       arch  : arm64
 
+    - name  : buildUBI7JE
+      prefix: libjemalloc
+      suffix: redhat7-x64
+      arch  : amd64
+    - name  : buildUBI7JE
+      prefix: libjemalloc
+      suffix: redhat7-aarch64
+      arch  : arm64
+
     - name  : buildUBI8TC
       prefix: libtcmalloc
       suffix: redhat8-x64
