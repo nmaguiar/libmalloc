@@ -288,6 +288,17 @@ jobs:
   args:
     name: buildUBI8JE
 
+# --------------------
+- name: Build UBI 7 JE
+  from:
+  - (pass    ):
+      image  : "{{init.ubi7.imageJE}}"
+      cmd    : "{{{init.ubi7.buildJE}}}"
+      copyCmd: "{{{$t init.ubi7.copyJE this}}}"
+  - Build lib
+  args:
+    name: buildUBI7JE
+
 # ------------------
 - name: Build UBI 9 TC
   from:
