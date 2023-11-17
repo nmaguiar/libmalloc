@@ -18,56 +18,56 @@ help:
 init:
   alpine:
     imageTC: alpine
-    buildTC: apk update && apk --no-cache add autoconf automake libtool make gcc musl-dev g++ git && git clone https://github.com/gperftools/gperftools && cd gperftools && sh autogen.sh && sh configure && make
+    buildTC: apk update && apk --no-cache add autoconf automake libtool make gcc musl-dev g++ git patch && git clone https://github.com/gperftools/gperftools && cd gperftools && sh autogen.sh && sh configure && make
     copyTC : mkdir /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && cp -a .libs/libtcmalloc*.so* /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && chmod a+rw /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}
     
     imageJE: alpine
-    buildJE: apk update && apk --no-cache add autoconf automake libtool make gcc musl-dev git && git clone https://github.com/jemalloc/jemalloc && cd jemalloc && sh autogen.sh && sh configure && make
+    buildJE: apk update && apk --no-cache add autoconf automake libtool make gcc musl-dev git patch && git clone https://github.com/jemalloc/jemalloc && cd jemalloc && sh autogen.sh && sh configure && make
     copyJE : mkdir /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && cp -a lib/*.so* /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && chmod a+rw /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}
 
   oracle9:
     imageTC: oraclelinux:9
-    buildTC: yum -y -q update && yum install -y -q autoconf automake libtool gcc gcc-c++ git make && git clone https://github.com/gperftools/gperftools && cd gperftools && sh autogen.sh && sh configure && make
+    buildTC: yum -y -q update && yum install -y -q autoconf automake libtool gcc gcc-c++ git make patch && git clone https://github.com/gperftools/gperftools && cd gperftools && sh autogen.sh && sh configure && make
     copyTC : mkdir /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && cp -a .libs/libtcmalloc*.so* /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && chmod a+rw /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}
       
     imageJE: oraclelinux:9
-    buildJE: yum -y -q update && yum install -y -q autoconf automake libtool gcc make git && git clone https://github.com/jemalloc/jemalloc && cd jemalloc && sh autogen.sh && sh configure && make
+    buildJE: yum -y -q update && yum install -y -q autoconf automake libtool gcc make git patch && git clone https://github.com/jemalloc/jemalloc && cd jemalloc && sh autogen.sh && sh configure && make
     copyJE : mkdir /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && cp -a lib/*.so* /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && chmod a+rw /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}
 
   oracle8:
     imageTC: oraclelinux:8.8
-    buildTC: yum -y -q update && yum install -y -q autoconf automake libtool gcc gcc-c++ git make && git clone https://github.com/gperftools/gperftools && cd gperftools && sh autogen.sh && LDFLAGS="-lpthread" sh configure && make
+    buildTC: yum -y -q update && yum install -y -q autoconf automake libtool gcc gcc-c++ git make patch && git clone https://github.com/gperftools/gperftools && cd gperftools && sh autogen.sh && LDFLAGS="-lpthread" sh configure && make
     copyTC : mkdir /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && cp -a .libs/libtcmalloc*.so* /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && chmod a+rw /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}
       
     imageJE: oraclelinux:8.8
-    buildJE: yum -y -q update && yum install -y -q autoconf automake libtool gcc make git && git clone https://github.com/jemalloc/jemalloc && cd jemalloc && sh autogen.sh && sh configure && make
+    buildJE: yum -y -q update && yum install -y -q autoconf automake libtool gcc make git patch && git clone https://github.com/jemalloc/jemalloc && cd jemalloc && sh autogen.sh && sh configure && make
     copyJE : mkdir /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && cp -a lib/*.so* /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && chmod a+rw /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}
 
   oracle7:
     imageTC: oraclelinux:7
-    buildTC: yum -y -q update && yum install -y -q autoconf automake libtool gcc gcc-c++ git make file && git clone https://github.com/gperftools/gperftools && cd gperftools && sh autogen.sh && sh configure && make
+    buildTC: yum -y -q update && yum install -y -q autoconf automake libtool gcc gcc-c++ git make file patch && git clone https://github.com/gperftools/gperftools && cd gperftools && sh autogen.sh && sh configure && make
     copyTC : mkdir /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && cp -a .libs/libtcmalloc*.so* /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && chmod a+rw /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}
       
     imageJE: oraclelinux:7
-    buildJE: yum -y -q update && yum install -y -q autoconf automake libtool gcc make git && git clone https://github.com/jemalloc/jemalloc && cd jemalloc && sh autogen.sh && sh configure && make
+    buildJE: yum -y -q update && yum install -y -q autoconf automake libtool gcc make git patch && git clone https://github.com/jemalloc/jemalloc && cd jemalloc && sh autogen.sh && sh configure && make
     copyJE : mkdir /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && cp -a lib/*.so* /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && chmod a+rw /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}   
 
   ubi9:
     imageTC: registry.access.redhat.com/ubi9/ubi-minimal
-    buildTC: microdnf install -y --nodocs autoconf automake libtool make gcc gcc-c++ git && git clone https://github.com/gperftools/gperftools && cd gperftools && sh autogen.sh && sh configure && make
+    buildTC: microdnf install -y --nodocs autoconf automake libtool make gcc gcc-c++ git patch && git clone https://github.com/gperftools/gperftools && cd gperftools && sh autogen.sh && sh configure && make
     copyTC : mkdir /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && cp -a .libs/libtcmalloc*.so* /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && chmod a+rw /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}
     
     imageJE: registry.access.redhat.com/ubi9/ubi-minimal
-    buildJE: microdnf install -y --nodocs autoconf automake libtool make gcc git && git clone https://github.com/jemalloc/jemalloc && cd jemalloc && sh autogen.sh && sh configure && make
+    buildJE: microdnf install -y --nodocs autoconf automake libtool make gcc git patch && git clone https://github.com/jemalloc/jemalloc && cd jemalloc && sh autogen.sh && sh configure && make
     copyJE : mkdir /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && cp -a lib/*.so* /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && chmod a+rw /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}
 
   ubi8:
     imageTC: registry.access.redhat.com/ubi8/ubi-minimal
-    buildTC: microdnf install -y --nodocs autoconf automake libtool make gcc gcc-c++ git && git clone https://github.com/gperftools/gperftools && cd gperftools && sh autogen.sh && sh configure && make
+    buildTC: microdnf install -y --nodocs autoconf automake libtool make gcc gcc-c++ git patch && git clone https://github.com/gperftools/gperftools && cd gperftools && sh autogen.sh && sh configure && make
     copyTC : mkdir /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && cp -a .libs/libtcmalloc*.so* /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && chmod a+rw /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}
     
     imageJE: registry.access.redhat.com/ubi8/ubi-minimal
-    buildJE: microdnf install -y --nodocs autoconf automake libtool make gcc git && git clone https://github.com/jemalloc/jemalloc && cd jemalloc && sh autogen.sh && sh configure && make
+    buildJE: microdnf install -y --nodocs autoconf automake libtool make gcc git patch && git clone https://github.com/jemalloc/jemalloc && cd jemalloc && sh autogen.sh && sh configure && make
     copyJE : mkdir /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && cp -a lib/*.so* /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && chmod a+rw /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}
 
   ubi7:
@@ -76,25 +76,25 @@ init:
     copyTC : mkdir /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && cp -a .libs/libtcmalloc*.so* /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && chmod a+rw /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}
     
     imageJE: registry.access.redhat.com/ubi7/ubi-minimal
-    buildJE: microdnf install -y --nodocs autoconf automake libtool make gcc git && git clone https://github.com/jemalloc/jemalloc && cd jemalloc && sh autogen.sh && sh configure && make
+    buildJE: microdnf install -y --nodocs autoconf automake libtool make gcc git patch && git clone https://github.com/jemalloc/jemalloc && cd jemalloc && sh autogen.sh && sh configure && make
     copyJE : mkdir /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && cp -a lib/*.so* /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && chmod a+rw /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}
 
   ubuntu:
     imageTC: ubuntu:bionic
-    buildTC: apt-get update && apt-get install -y autoconf automake libtool make gcc g++ git && git clone https://github.com/gperftools/gperftools && cd gperftools && sh autogen.sh && sh configure && make
+    buildTC: apt-get update && apt-get install -y autoconf automake libtool make gcc g++ git patch && git clone https://github.com/gperftools/gperftools && cd gperftools && sh autogen.sh && sh configure && make
     copyTC : mkdir /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && cp -a .libs/libtcmalloc*.so* /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && chmod a+rw /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}
     
     imageJE: ubuntu:bionic
-    buildJE: apt-get update && apt-get install -y autoconf automake libtool make gcc git && git clone https://github.com/jemalloc/jemalloc && cd jemalloc && sh autogen.sh && sh configure && make
+    buildJE: apt-get update && apt-get install -y autoconf automake libtool make gcc git patch && git clone https://github.com/jemalloc/jemalloc && cd jemalloc && sh autogen.sh && sh configure && make
     copyJE : mkdir /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && cp -a lib/*.so* /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && chmod a+rw /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}
 
   ubuntuFocal:
     imageTC: ubuntu:focal
-    buildTC: apt-get update && apt-get install -y autoconf automake libtool make gcc g++ git && git clone https://github.com/gperftools/gperftools && cd gperftools && sh autogen.sh && sh configure && make
+    buildTC: apt-get update && apt-get install -y autoconf automake libtool make gcc g++ git patch && git clone https://github.com/gperftools/gperftools && cd gperftools && sh autogen.sh && sh configure && make
     copyTC : mkdir /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && cp -a .libs/libtcmalloc*.so* /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && chmod a+rw /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}
     
     imageJE: ubuntu:focal
-    buildJE: apt-get update && apt-get install -y autoconf automake libtool make gcc git && git clone https://github.com/jemalloc/jemalloc && cd jemalloc && sh autogen.sh && sh configure && make
+    buildJE: apt-get update && apt-get install -y autoconf automake libtool make gcc git patch && git clone https://github.com/jemalloc/jemalloc && cd jemalloc && sh autogen.sh && sh configure && make
     copyJE : mkdir /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && cp -a lib/*.so* /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && chmod a+rw /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}
 
 
