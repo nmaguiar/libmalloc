@@ -44,7 +44,7 @@ template: &TEMPLATE |
     # ============
     {{name}}{{arch}}:
       {{#$is arch 'arm64'}}
-      runs-on: self-hosted
+      runs-on: ubuntu-24.04-arm
       {{else}}
       runs-on: ubuntu-latest
       {{/$is}}

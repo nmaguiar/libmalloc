@@ -86,7 +86,7 @@ jobs:
 
   # ============
   buildUBI9JEarm64:
-    runs-on: self-hosted
+    runs-on: ubuntu-24.04-arm
     permissions:
       contents     : write
       pull-requests: write
@@ -181,7 +181,7 @@ jobs:
 
   # ============
   buildUBI9TCarm64:
-    runs-on: self-hosted
+    runs-on: ubuntu-24.04-arm
     permissions:
       contents     : write
       pull-requests: write
@@ -276,7 +276,7 @@ jobs:
 
   # ============
   buildUbuntuJEarm64:
-    runs-on: self-hosted
+    runs-on: ubuntu-24.04-arm
     permissions:
       contents     : write
       pull-requests: write
@@ -371,7 +371,7 @@ jobs:
 
   # ============
   buildUbuntuFocalTCarm64:
-    runs-on: self-hosted
+    runs-on: ubuntu-24.04-arm
     permissions:
       contents     : write
       pull-requests: write
@@ -466,7 +466,7 @@ jobs:
 
   # ============
   buildUBI8JEarm64:
-    runs-on: self-hosted
+    runs-on: ubuntu-24.04-arm
     permissions:
       contents     : write
       pull-requests: write
@@ -561,7 +561,7 @@ jobs:
 
   # ============
   buildUBI7JEarm64:
-    runs-on: self-hosted
+    runs-on: ubuntu-24.04-arm
     permissions:
       contents     : write
       pull-requests: write
@@ -656,7 +656,7 @@ jobs:
 
   # ============
   buildUBI8TCarm64:
-    runs-on: self-hosted
+    runs-on: ubuntu-24.04-arm
     permissions:
       contents     : write
       pull-requests: write
@@ -751,7 +751,7 @@ jobs:
 
   # ============
   buildAlpineJEarm64:
-    runs-on: self-hosted
+    runs-on: ubuntu-24.04-arm
     permissions:
       contents     : write
       pull-requests: write
@@ -846,7 +846,7 @@ jobs:
 
   # ============
   buildAlpineTCarm64:
-    runs-on: self-hosted
+    runs-on: ubuntu-24.04-arm
     permissions:
       contents     : write
       pull-requests: write
@@ -941,7 +941,7 @@ jobs:
 
   # ============
   buildOracle7JEarm64:
-    runs-on: self-hosted
+    runs-on: ubuntu-24.04-arm
     permissions:
       contents     : write
       pull-requests: write
@@ -1036,7 +1036,7 @@ jobs:
 
   # ============
   buildOracle8JEarm64:
-    runs-on: self-hosted
+    runs-on: ubuntu-24.04-arm
     permissions:
       contents     : write
       pull-requests: write
@@ -1131,7 +1131,7 @@ jobs:
 
   # ============
   buildOracle8TCarm64:
-    runs-on: self-hosted
+    runs-on: ubuntu-24.04-arm
     permissions:
       contents     : write
       pull-requests: write
