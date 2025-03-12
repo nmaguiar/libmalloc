@@ -95,7 +95,7 @@ jobs:
     - name: Cache OpenAF runtime
       uses: actions/cache@v4
       with:
-        key : oaf-t8
+        key : oaf-t8-arm
         path: /tmp/oaf
 
     # --------------
@@ -190,7 +190,7 @@ jobs:
     - name: Cache OpenAF runtime
       uses: actions/cache@v4
       with:
-        key : oaf-t8
+        key : oaf-t8-arm
         path: /tmp/oaf
 
     # --------------
@@ -285,7 +285,7 @@ jobs:
     - name: Cache OpenAF runtime
       uses: actions/cache@v4
       with:
-        key : oaf-t8
+        key : oaf-t8-arm
         path: /tmp/oaf
 
     # --------------
@@ -380,7 +380,7 @@ jobs:
     - name: Cache OpenAF runtime
       uses: actions/cache@v4
       with:
-        key : oaf-t8
+        key : oaf-t8-arm
         path: /tmp/oaf
 
     # --------------
@@ -475,7 +475,7 @@ jobs:
     - name: Cache OpenAF runtime
       uses: actions/cache@v4
       with:
-        key : oaf-t8
+        key : oaf-t8-arm
         path: /tmp/oaf
 
     # --------------
@@ -570,7 +570,7 @@ jobs:
     - name: Cache OpenAF runtime
       uses: actions/cache@v4
       with:
-        key : oaf-t8
+        key : oaf-t8-arm
         path: /tmp/oaf
 
     # --------------
@@ -665,7 +665,7 @@ jobs:
     - name: Cache OpenAF runtime
       uses: actions/cache@v4
       with:
-        key : oaf-t8
+        key : oaf-t8-arm
         path: /tmp/oaf
 
     # --------------
@@ -760,7 +760,7 @@ jobs:
     - name: Cache OpenAF runtime
       uses: actions/cache@v4
       with:
-        key : oaf-t8
+        key : oaf-t8-arm
         path: /tmp/oaf
 
     # --------------
@@ -855,7 +855,7 @@ jobs:
     - name: Cache OpenAF runtime
       uses: actions/cache@v4
       with:
-        key : oaf-t8
+        key : oaf-t8-arm
         path: /tmp/oaf
 
     # --------------
@@ -950,7 +950,7 @@ jobs:
     - name: Cache OpenAF runtime
       uses: actions/cache@v4
       with:
-        key : oaf-t8
+        key : oaf-t8-arm
         path: /tmp/oaf
 
     # --------------
@@ -1045,7 +1045,7 @@ jobs:
     - name: Cache OpenAF runtime
       uses: actions/cache@v4
       with:
-        key : oaf-t8
+        key : oaf-t8-arm
         path: /tmp/oaf
 
     # --------------
@@ -1140,7 +1140,7 @@ jobs:
     - name: Cache OpenAF runtime
       uses: actions/cache@v4
       with:
-        key : oaf-t8
+        key : oaf-t8-arm
         path: /tmp/oaf
 
     # --------------
