@@ -47,14 +47,14 @@ jobs:
 
     steps  :
     - name: Cache OpenAF runtime
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         key : oaf-t8
         path: /tmp/oaf
 
     # --------------
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
 
     # -----------
@@ -79,7 +79,7 @@ jobs:
 
     # -------------------
     - name: Upload output
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: libjemalloc-${{ env.version }}-redhat9-x64
         path: buildUBI9JE
@@ -93,14 +93,14 @@ jobs:
 
     steps  :
     - name: Cache OpenAF runtime
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         key : oaf-t8
         path: /tmp/oaf
 
     # --------------
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     # -----------------
     #- name: Set up QEMU
@@ -128,7 +128,7 @@ jobs:
 
     # -------------------
     - name: Upload output
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: libjemalloc-${{ env.version }}-redhat9-aarch64
         path: buildUBI9JE
@@ -142,14 +142,14 @@ jobs:
 
     steps  :
     - name: Cache OpenAF runtime
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         key : oaf-t8
         path: /tmp/oaf
 
     # --------------
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
 
     # -----------
@@ -174,7 +174,7 @@ jobs:
 
     # -------------------
     - name: Upload output
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: libtcmalloc-${{ env.version }}-redhat9-x64
         path: buildUBI9TC
@@ -188,14 +188,14 @@ jobs:
 
     steps  :
     - name: Cache OpenAF runtime
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         key : oaf-t8
         path: /tmp/oaf
 
     # --------------
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     # -----------------
     #- name: Set up QEMU
@@ -223,7 +223,7 @@ jobs:
 
     # -------------------
     - name: Upload output
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: libtcmalloc-${{ env.version }}-redhat9-aarch64
         path: buildUBI9TC
@@ -237,14 +237,14 @@ jobs:
 
     steps  :
     - name: Cache OpenAF runtime
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         key : oaf-t8
         path: /tmp/oaf
 
     # --------------
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
 
     # -----------
@@ -269,7 +269,7 @@ jobs:
 
     # -------------------
     - name: Upload output
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: libmimalloc-${{ env.version }}-redhat9-x64
         path: buildUBI9MI
@@ -283,14 +283,14 @@ jobs:
 
     steps  :
     - name: Cache OpenAF runtime
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         key : oaf-t8
         path: /tmp/oaf
 
     # --------------
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     # -----------------
     #- name: Set up QEMU
@@ -318,7 +318,7 @@ jobs:
 
     # -------------------
     - name: Upload output
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: libmimalloc-${{ env.version }}-redhat9-aarch64
         path: buildUBI9MI
@@ -332,14 +332,14 @@ jobs:
 
     steps  :
     - name: Cache OpenAF runtime
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         key : oaf-t8
         path: /tmp/oaf
 
     # --------------
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
 
     # -----------
@@ -364,7 +364,7 @@ jobs:
 
     # -------------------
     - name: Upload output
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: libjemalloc-${{ env.version }}-debian-x64
         path: buildUbuntuJE
@@ -378,14 +378,14 @@ jobs:
 
     steps  :
     - name: Cache OpenAF runtime
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         key : oaf-t8
         path: /tmp/oaf
 
     # --------------
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     # -----------------
     #- name: Set up QEMU
@@ -413,7 +413,7 @@ jobs:
 
     # -------------------
     - name: Upload output
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: libjemalloc-${{ env.version }}-debian-aarch64
         path: buildUbuntuJE
@@ -427,14 +427,14 @@ jobs:
 
     steps  :
     - name: Cache OpenAF runtime
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         key : oaf-t8
         path: /tmp/oaf
 
     # --------------
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
 
     # -----------
@@ -459,7 +459,7 @@ jobs:
 
     # -------------------
     - name: Upload output
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: libjemalloc-${{ env.version }}-debian-bionic-x64
         path: buildUbuntuBionicJE
@@ -473,14 +473,14 @@ jobs:
 
     steps  :
     - name: Cache OpenAF runtime
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         key : oaf-t8
         path: /tmp/oaf
 
     # --------------
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     # -----------------
     #- name: Set up QEMU
@@ -508,7 +508,7 @@ jobs:
 
     # -------------------
     - name: Upload output
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: libjemalloc-${{ env.version }}-debian-bionic-aarch64
         path: buildUbuntuBionicJE
@@ -522,14 +522,14 @@ jobs:
 
     steps  :
     - name: Cache OpenAF runtime
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         key : oaf-t8
         path: /tmp/oaf
 
     # --------------
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
 
     # -----------
@@ -554,7 +554,7 @@ jobs:
 
     # -------------------
     - name: Upload output
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: libtcmalloc-${{ env.version }}-debian-x64
         path: buildUbuntuTC
@@ -568,14 +568,14 @@ jobs:
 
     steps  :
     - name: Cache OpenAF runtime
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         key : oaf-t8
         path: /tmp/oaf
 
     # --------------
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     # -----------------
     #- name: Set up QEMU
@@ -603,7 +603,7 @@ jobs:
 
     # -------------------
     - name: Upload output
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: libtcmalloc-${{ env.version }}-debian-focal-aarch64
         path: buildUbuntuFocalTC
@@ -617,14 +617,14 @@ jobs:
 
     steps  :
     - name: Cache OpenAF runtime
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         key : oaf-t8
         path: /tmp/oaf
 
     # --------------
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
 
     # -----------
@@ -649,7 +649,7 @@ jobs:
 
     # -------------------
     - name: Upload output
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: libtcmalloc-${{ env.version }}-debian-bionic-x64
         path: buildUbuntuBionicTC
@@ -663,14 +663,14 @@ jobs:
 
     steps  :
     - name: Cache OpenAF runtime
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         key : oaf-t8
         path: /tmp/oaf
 
     # --------------
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     # -----------------
     #- name: Set up QEMU
@@ -698,7 +698,7 @@ jobs:
 
     # -------------------
     - name: Upload output
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: libtcmalloc-${{ env.version }}-debian-bionic-aarch64
         path: buildUbuntuBionicTC
@@ -712,14 +712,14 @@ jobs:
 
     steps  :
     - name: Cache OpenAF runtime
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         key : oaf-t8
         path: /tmp/oaf
 
     # --------------
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
 
     # -----------
@@ -744,7 +744,7 @@ jobs:
 
     # -------------------
     - name: Upload output
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: libmimalloc-${{ env.version }}-debian-x64
         path: buildUbuntuMI
@@ -758,14 +758,14 @@ jobs:
 
     steps  :
     - name: Cache OpenAF runtime
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         key : oaf-t8
         path: /tmp/oaf
 
     # --------------
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     # -----------------
     #- name: Set up QEMU
@@ -793,7 +793,7 @@ jobs:
 
     # -------------------
     - name: Upload output
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: libmimalloc-${{ env.version }}-debian-aarch64
         path: buildUbuntuMI
@@ -807,14 +807,14 @@ jobs:
 
     steps  :
     - name: Cache OpenAF runtime
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         key : oaf-t8
         path: /tmp/oaf
 
     # --------------
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
 
     # -----------
@@ -839,7 +839,7 @@ jobs:
 
     # -------------------
     - name: Upload output
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: libmimalloc-${{ env.version }}-debian-bionic-x64
         path: buildUbuntuBionicMI
@@ -853,14 +853,14 @@ jobs:
 
     steps  :
     - name: Cache OpenAF runtime
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         key : oaf-t8
         path: /tmp/oaf
 
     # --------------
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     # -----------------
     #- name: Set up QEMU
@@ -888,7 +888,7 @@ jobs:
 
     # -------------------
     - name: Upload output
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: libmimalloc-${{ env.version }}-debian-bionic-aarch64
         path: buildUbuntuBionicMI
@@ -902,14 +902,14 @@ jobs:
 
     steps  :
     - name: Cache OpenAF runtime
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         key : oaf-t8
         path: /tmp/oaf
 
     # --------------
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
 
     # -----------
@@ -934,7 +934,7 @@ jobs:
 
     # -------------------
     - name: Upload output
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: libjemalloc-${{ env.version }}-redhat8-x64
         path: buildUBI8JE
@@ -948,14 +948,14 @@ jobs:
 
     steps  :
     - name: Cache OpenAF runtime
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         key : oaf-t8
         path: /tmp/oaf
 
     # --------------
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     # -----------------
     #- name: Set up QEMU
@@ -983,7 +983,7 @@ jobs:
 
     # -------------------
     - name: Upload output
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: libjemalloc-${{ env.version }}-redhat8-aarch64
         path: buildUBI8JE
@@ -997,14 +997,14 @@ jobs:
 
     steps  :
     - name: Cache OpenAF runtime
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         key : oaf-t8
         path: /tmp/oaf
 
     # --------------
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
 
     # -----------
@@ -1029,7 +1029,7 @@ jobs:
 
     # -------------------
     - name: Upload output
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: libjemalloc-${{ env.version }}-redhat7-x64
         path: buildUBI7JE
@@ -1043,14 +1043,14 @@ jobs:
 
     steps  :
     - name: Cache OpenAF runtime
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         key : oaf-t8
         path: /tmp/oaf
 
     # --------------
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     # -----------------
     #- name: Set up QEMU
@@ -1078,7 +1078,7 @@ jobs:
 
     # -------------------
     - name: Upload output
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: libjemalloc-${{ env.version }}-redhat7-aarch64
         path: buildUBI7JE
@@ -1092,14 +1092,14 @@ jobs:
 
     steps  :
     - name: Cache OpenAF runtime
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         key : oaf-t8
         path: /tmp/oaf
 
     # --------------
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
 
     # -----------
@@ -1124,7 +1124,7 @@ jobs:
 
     # -------------------
     - name: Upload output
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: libtcmalloc-${{ env.version }}-redhat8-x64
         path: buildUBI8TC
@@ -1138,14 +1138,14 @@ jobs:
 
     steps  :
     - name: Cache OpenAF runtime
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         key : oaf-t8
         path: /tmp/oaf
 
     # --------------
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     # -----------------
     #- name: Set up QEMU
@@ -1173,7 +1173,7 @@ jobs:
 
     # -------------------
     - name: Upload output
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: libtcmalloc-${{ env.version }}-redhat8-aarch64
         path: buildUBI8TC
@@ -1187,14 +1187,14 @@ jobs:
 
     steps  :
     - name: Cache OpenAF runtime
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         key : oaf-t8
         path: /tmp/oaf
 
     # --------------
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
 
     # -----------
@@ -1219,7 +1219,7 @@ jobs:
 
     # -------------------
     - name: Upload output
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: libmimalloc-${{ env.version }}-redhat8-x64
         path: buildUBI8MI
@@ -1233,14 +1233,14 @@ jobs:
 
     steps  :
     - name: Cache OpenAF runtime
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         key : oaf-t8
         path: /tmp/oaf
 
     # --------------
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     # -----------------
     #- name: Set up QEMU
@@ -1268,7 +1268,7 @@ jobs:
 
     # -------------------
     - name: Upload output
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: libmimalloc-${{ env.version }}-redhat8-aarch64
         path: buildUBI8MI
@@ -1282,14 +1282,14 @@ jobs:
 
     steps  :
     - name: Cache OpenAF runtime
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         key : oaf-t8
         path: /tmp/oaf
 
     # --------------
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
 
     # -----------
@@ -1314,7 +1314,7 @@ jobs:
 
     # -------------------
     - name: Upload output
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: libjemalloc-${{ env.version }}-alpine-x64
         path: buildAlpineJE
@@ -1328,14 +1328,14 @@ jobs:
 
     steps  :
     - name: Cache OpenAF runtime
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         key : oaf-t8
         path: /tmp/oaf
 
     # --------------
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     # -----------------
     #- name: Set up QEMU
@@ -1363,7 +1363,7 @@ jobs:
 
     # -------------------
     - name: Upload output
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: libjemalloc-${{ env.version }}-alpine-aarch64
         path: buildAlpineJE
@@ -1377,14 +1377,14 @@ jobs:
 
     steps  :
     - name: Cache OpenAF runtime
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         key : oaf-t8
         path: /tmp/oaf
 
     # --------------
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
 
     # -----------
@@ -1409,7 +1409,7 @@ jobs:
 
     # -------------------
     - name: Upload output
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: libtcmalloc-${{ env.version }}-alpine-x64
         path: buildAlpineTC
@@ -1423,14 +1423,14 @@ jobs:
 
     steps  :
     - name: Cache OpenAF runtime
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         key : oaf-t8
         path: /tmp/oaf
 
     # --------------
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     # -----------------
     #- name: Set up QEMU
@@ -1458,7 +1458,7 @@ jobs:
 
     # -------------------
     - name: Upload output
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: libtcmalloc-${{ env.version }}-alpine-aarch64
         path: buildAlpineTC
@@ -1472,14 +1472,14 @@ jobs:
 
     steps  :
     - name: Cache OpenAF runtime
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         key : oaf-t8
         path: /tmp/oaf
 
     # --------------
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
 
     # -----------
@@ -1504,7 +1504,7 @@ jobs:
 
     # -------------------
     - name: Upload output
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: libjemalloc-${{ env.version }}-oracle7-x64
         path: buildOracle7JE
@@ -1518,14 +1518,14 @@ jobs:
 
     steps  :
     - name: Cache OpenAF runtime
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         key : oaf-t8
         path: /tmp/oaf
 
     # --------------
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     # -----------------
     #- name: Set up QEMU
@@ -1553,7 +1553,7 @@ jobs:
 
     # -------------------
     - name: Upload output
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: libjemalloc-${{ env.version }}-oracle7-aarch64
         path: buildOracle7JE
@@ -1567,14 +1567,14 @@ jobs:
 
     steps  :
     - name: Cache OpenAF runtime
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         key : oaf-t8
         path: /tmp/oaf
 
     # --------------
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
 
     # -----------
@@ -1599,7 +1599,7 @@ jobs:
 
     # -------------------
     - name: Upload output
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: libjemalloc-${{ env.version }}-oracle8-x64
         path: buildOracle8JE
@@ -1613,14 +1613,14 @@ jobs:
 
     steps  :
     - name: Cache OpenAF runtime
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         key : oaf-t8
         path: /tmp/oaf
 
     # --------------
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     # -----------------
     #- name: Set up QEMU
@@ -1648,7 +1648,7 @@ jobs:
 
     # -------------------
     - name: Upload output
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: libjemalloc-${{ env.version }}-oracle8-aarch64
         path: buildOracle8JE
@@ -1662,14 +1662,14 @@ jobs:
 
     steps  :
     - name: Cache OpenAF runtime
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         key : oaf-t8
         path: /tmp/oaf
 
     # --------------
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
 
     # -----------
@@ -1694,7 +1694,7 @@ jobs:
 
     # -------------------
     - name: Upload output
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: libtcmalloc-${{ env.version }}-oracle8-x64
         path: buildOracle8TC
@@ -1708,14 +1708,14 @@ jobs:
 
     steps  :
     - name: Cache OpenAF runtime
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         key : oaf-t8
         path: /tmp/oaf
 
     # --------------
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     # -----------------
     #- name: Set up QEMU
@@ -1743,7 +1743,7 @@ jobs:
 
     # -------------------
     - name: Upload output
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: libtcmalloc-${{ env.version }}-oracle8-aarch64
         path: buildOracle8TC
@@ -1757,14 +1757,14 @@ jobs:
 
     steps  :
     - name: Cache OpenAF runtime
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         key : oaf-t8
         path: /tmp/oaf
 
     # --------------
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
 
     # -----------
@@ -1789,7 +1789,7 @@ jobs:
 
     # -------------------
     - name: Upload output
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: libmimalloc-${{ env.version }}-oracle8-x64
         path: buildOracle8MI
@@ -1803,14 +1803,14 @@ jobs:
 
     steps  :
     - name: Cache OpenAF runtime
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         key : oaf-t8
         path: /tmp/oaf
 
     # --------------
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     # -----------------
     #- name: Set up QEMU
@@ -1838,7 +1838,7 @@ jobs:
 
     # -------------------
     - name: Upload output
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: libmimalloc-${{ env.version }}-oracle8-aarch64
         path: buildOracle8MI
@@ -1892,7 +1892,7 @@ jobs:
 
     steps:
     - name: Checkout 
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Download artifacts
       uses: actions/download-artifact@v3

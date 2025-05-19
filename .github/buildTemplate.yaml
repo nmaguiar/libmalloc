@@ -91,7 +91,7 @@ template: &TEMPLATE |
 
       # -------------------
       - name: Upload output
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: {{prefix}}-$\{{ env.version }}-{{suffix}}
           path: {{name}}
