@@ -158,6 +158,15 @@ todo:
       suffix: redhat9-aarch64
       arch  : arm64
 
+    - name  : buildUBI9MI
+      prefix: libmimalloc
+      suffix: redhat9-x64
+      arch  : amd64
+    - name  : buildUBI9MI
+      prefix: libmimalloc
+      suffix: redhat9-aarch64
+      arch  : arm64
+
     - name  : buildUbuntuJE
       prefix: libjemalloc
       suffix: debian-x64
@@ -167,6 +176,15 @@ todo:
       suffix: debian-aarch64
       arch  : arm64
 
+    - name  : buildUbuntuBionicJE
+      prefix: libjemalloc
+      suffix: debian-bionic-x64
+      arch  : amd64
+    - name  : buildUbuntuBionicJE
+      prefix: libjemalloc
+      suffix: debian-bionic-aarch64
+      arch  : arm64
+
     - name  : buildUbuntuTC
       prefix: libtcmalloc
       suffix: debian-x64
@@ -174,6 +192,33 @@ todo:
     - name  : buildUbuntuFocalTC
       prefix: libtcmalloc
       suffix: debian-focal-aarch64
+      arch  : arm64
+ 
+    - name  : buildUbuntuBionicTC
+      prefix: libtcmalloc
+      suffix: debian-bionic-x64
+      arch  : amd64
+    - name  : buildUbuntuBionicTC
+      prefix: libtcmalloc
+      suffix: debian-bionic-aarch64
+      arch  : arm64
+
+    - name  : buildUbuntuMI
+      prefix: libmimalloc
+      suffix: debian-x64
+      arch  : amd64
+    - name  : buildUbuntuMI
+      prefix: libmimalloc
+      suffix: debian-aarch64
+      arch  : arm64
+
+    - name  : buildUbuntuBionicMI
+      prefix: libmimalloc
+      suffix: debian-bionic-x64
+      arch  : amd64
+    - name  : buildUbuntuBionicMI
+      prefix: libmimalloc
+      suffix: debian-bionic-aarch64
       arch  : arm64
 
     - name  : buildUBI8JE
@@ -200,6 +245,15 @@ todo:
       arch  : amd64
     - name  : buildUBI8TC
       prefix: libtcmalloc
+      suffix: redhat8-aarch64
+      arch  : arm64
+
+    - name  : buildUBI8MI
+      prefix: libmimalloc
+      suffix: redhat8-x64
+      arch  : amd64
+    - name  : buildUBI8MI
+      prefix: libmimalloc
       suffix: redhat8-aarch64
       arch  : arm64
 
@@ -254,6 +308,15 @@ todo:
       arch  : amd64
     - name  : buildOracle8TC
       prefix: libtcmalloc
+      suffix: oracle8-aarch64
+      arch  : arm64
+
+    - name  : buildOracle8MI
+      prefix: libmimalloc
+      suffix: oracle8-x64
+      arch  : amd64
+    - name  : buildOracle8MI
+      prefix: libmimalloc
       suffix: oracle8-aarch64
       arch  : arm64
 

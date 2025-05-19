@@ -38,6 +38,11 @@ init:
     copyJE : mkdir /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && cp -a lib/*.so* /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && chmod a+rw /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}
     testJE : yum -y -q update && yum install -y -q curl && curl https://ojob.io/get.sh | sh && LD_PRELOAD=/output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}/libjemalloc.so oaf/oaf -c 'exit(\$sh(\"grep libjemalloc.so /proc/\"+getPid()+\"/maps\").get(0).exitcode)'
 
+    imageMI: oraclelinux:9 
+    buildMI: yum -y -q update && yum install -y -q autoconf automake libtool gcc gcc-c++ cmake git make patch && git clone https://github.com/microsoft/mimalloc && cd mimalloc && mkdir -p out/release && cd out/release && cmake ../.. && make
+    copyMI : mkdir /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && cp -a lib/*.so* /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && chmod a+rw /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}
+    testMI : yum -y -q update && yum install -y -q curl && curl https://ojob.io/get.sh | sh && LD_PRELOAD=/output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}/libmimalloc.so oaf/oaf -c 'exit(\$sh(\"grep libmimalloc.so /proc/\"+getPid()+\"/maps\").get(0).exitcode)'
+
   oracle8:
     imageTC: oraclelinux:8.8
     buildTC: yum -y -q update && yum install -y -q autoconf automake libtool gcc gcc-c++ git make patch && git clone https://github.com/gperftools/gperftools && cd gperftools && sh autogen.sh && LDFLAGS="-lpthread" sh configure && make
@@ -48,6 +53,11 @@ init:
     buildJE: yum -y -q update && yum install -y -q autoconf automake libtool gcc make git patch && git clone https://github.com/jemalloc/jemalloc && cd jemalloc && sh autogen.sh && sh configure && make
     copyJE : mkdir /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && cp -a lib/*.so* /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && chmod a+rw /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}
     testJE : yum -y -q update && yum install -y -q curl && curl https://ojob.io/get.sh | sh && LD_PRELOAD=/output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}/libjemalloc.so oaf/oaf -c 'exit(\$sh(\"grep libjemalloc.so /proc/\"+getPid()+\"/maps\").get(0).exitcode)'
+
+    imageMI: oraclelinux:8.8
+    buildMI: yum -y -q update && yum install -y -q autoconf automake libtool gcc gcc-c++ cmake git make patch && git clone https://github.com/microsoft/mimalloc && cd mimalloc && mkdir -p out/release && cd out/release && cmake ../.. && make
+    copyMI : mkdir /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && cp -a lib/*.so* /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && chmod a+rw /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}
+    testMI : yum -y -q update && yum install -y -q curl && curl https://ojob.io/get.sh | sh && LD_PRELOAD=/output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}/libmimalloc.so oaf/oaf -c 'exit(\$sh(\"grep libmimalloc.so /proc/\"+getPid()+\"/maps\").get(0).exitcode)'
 
   oracle7:
     imageTC: oraclelinux:7
@@ -71,6 +81,11 @@ init:
     copyJE : mkdir /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && cp -a lib/*.so* /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && chmod a+rw /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}
     testJE : microdnf install -y --nodocs findutils tar gzip && curl https://ojob.io/get.sh | sh && LD_PRELOAD=/output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}/libjemalloc.so oaf/oaf -c 'exit(\$sh(\"grep libjemalloc.so /proc/\"+getPid()+\"/maps\").get(0).exitcode)'
 
+    imageMI: registry.access.redhat.com/ubi9/ubi-minimal
+    buildMI: microdnf install -y --nodocs autoconf automake libtool make cmake gcc gcc-c++ git patch && git clone https://github.com/microsoft/mimalloc && cd mimalloc && mkdir -p out/release && cd out/release && cmake ../.. && make
+    copyMI : mkdir /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && cp -a .libs/libtcmalloc*.so* /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && chmod a+rw /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}
+    testMI : microdnf install -y --nodocs findutils tar gzip && curl https://ojob.io/get.sh | sh && LD_PRELOAD=/output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}/libmimalloc.so oaf/oaf -c 'exit(\$sh(\"grep libmimalloc.so /proc/\"+getPid()+\"/maps\").get(0).exitcode)'
+
   ubi8:
     imageTC: registry.access.redhat.com/ubi8/ubi-minimal
     buildTC: microdnf install -y --nodocs autoconf automake libtool make gcc gcc-c++ git patch && git clone https://github.com/gperftools/gperftools && cd gperftools && sh autogen.sh && sh configure && make
@@ -81,6 +96,11 @@ init:
     buildJE: microdnf install -y --nodocs autoconf automake libtool make gcc git patch && git clone https://github.com/jemalloc/jemalloc && cd jemalloc && sh autogen.sh && sh configure && make
     copyJE : mkdir /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && cp -a lib/*.so* /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && chmod a+rw /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}
     testJE : microdnf install -y --nodocs findutils tar gzip && curl https://ojob.io/get.sh | sh && LD_PRELOAD=/output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}/libjemalloc.so oaf/oaf -c 'exit(\$sh(\"grep libjemalloc.so /proc/\"+getPid()+\"/maps\").get(0).exitcode)'
+
+    imageMI: registry.access.redhat.com/ubi8/ubi-minimal
+    buildMI: microdnf install -y --nodocs autoconf automake libtool make cmake gcc gcc-c++ git patch && git clone https://github.com/microsoft/mimalloc && cd mimalloc && mkdir -p out/release && cd out/release && cmake ../.. && make
+    copyMI : mkdir /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && cp -a .libs/libtcmalloc*.so* /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && chmod a+rw /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}
+    testMI : microdnf install -y --nodocs findutils tar gzip && curl https://ojob.io/get.sh | sh && LD_PRELOAD=/output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}/libmimalloc.so oaf/oaf -c 'exit(\$sh(\"grep libmimalloc.so /proc/\"+getPid()+\"/maps\").get(0).exitcode)'
 
   ubi7:
     imageTC: registry.access.redhat.com/ubi7/ubi-minimal
@@ -94,6 +114,22 @@ init:
     testJE : microdnf install -y --nodocs findutils tar gzip && curl https://ojob.io/get.sh | sh && LD_PRELOAD=/output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}/libjemalloc.so oaf/oaf -c 'exit(\$sh(\"grep libjemalloc.so /proc/\"+getPid()+\"/maps\").get(0).exitcode)'
 
   ubuntu:
+    imageTC: ubuntu:plucky
+    buildTC: apt-get update && apt-get install -y autoconf automake libtool make gcc g++ git patch && git clone https://github.com/gperftools/gperftools && cd gperftools && sh autogen.sh && sh configure && make
+    copyTC : mkdir /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && cp -a .libs/libtcmalloc*.so* /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && chmod a+rw /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}
+    testTC : apt-get update && apt-get install -y curl && curl https://ojob.io/get.sh | sh && LD_PRELOAD=/output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}/libtcmalloc_minimal.so oaf/oaf -c 'exit(\$sh(\"grep libtcmalloc_minimal.so /proc/\"+getPid()+\"/maps\").get(0).exitcode)'
+
+    imageJE: ubuntu:plucky
+    buildJE: apt-get update && apt-get install -y autoconf automake libtool make gcc git patch && git clone https://github.com/jemalloc/jemalloc && cd jemalloc && sh autogen.sh && sh configure && make
+    copyJE : mkdir /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && cp -a lib/*.so* /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && chmod a+rw /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}
+    testJE : apt-get update && apt-get install -y curl && curl https://ojob.io/get.sh | sh && LD_PRELOAD=/output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}/libjemalloc.so oaf/oaf -c 'exit(\$sh(\"grep libjemalloc.so /proc/\"+getPid()+\"/maps\").get(0).exitcode)'
+
+    imageMI: ubuntu:plucky
+    buildMI: apt-get update && apt-get install -y autoconf automake libtool cmake make gcc g++ git patch && git clone https://github.com/microsoft/mimalloc && cd mimalloc && mkdir -p out/release && cd out/release && cmake ../.. && make
+    copyMI : mkdir /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && cp -a .libs/libtcmalloc*.so* /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && chmod a+rw /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}
+    testMI : apt-get update && apt-get install -y curl && curl https://ojob.io/get.sh | sh && LD_PRELOAD=/output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}/libtcmalloc_minimal.so oaf/oaf -c 'exit(\$sh(\"grep libtcmalloc_minimal.so /proc/\"+getPid()+\"/maps\").get(0).exitcode)'
+
+  ubuntuBionic:
     imageTC: ubuntu:bionic
     buildTC: apt-get update && apt-get install -y autoconf automake libtool make gcc g++ git patch && git clone https://github.com/gperftools/gperftools && cd gperftools && sh autogen.sh && sh configure && make
     copyTC : mkdir /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && cp -a .libs/libtcmalloc*.so* /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && chmod a+rw /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}
@@ -123,10 +159,14 @@ todo:
     - Build UBI 9 JE
     buildUBI9TC   :
     - Build UBI 9 TC
+    buildUBI9MI  :
+    - Build UBI 9 MI
     buildUBI8JE  :
     - Build UBI 8 JE
     buildUBI8TC  :
     - Build UBI 8 TC
+    buildUBI8MI  : 
+    - Build UBI 8 MI
     buildUBI7JE  :
     - Build UBI 7 JE
     buildAlpineJE:
@@ -137,6 +177,8 @@ todo:
     - Build Oracle 8 TC
     buildOracle8JE:
     - Build Oracle 8 JE
+    buildOracle8MI:
+    - Build Oracle 8 MI
     buildOracle7TC:
     - Build Oracle 7 TC
     buildOracle7JE:
@@ -145,10 +187,18 @@ todo:
     - Build Oracle 9 TC
     buildOracle9JE:
     - Build Oracle 9 JE
+    buildOracle9MI:
+    - Build Oracle 9 MI
     buildUbuntuTC:
     - Build Ubuntu TC
     buildUbuntuJE:
     - Build Ubuntu JE
+    buildUbuntuMI:
+    - Build Ubuntu MI
+    buildUbuntuBionicTC:
+    - Build Ubuntu Focal TC
+    buildUbuntuBionicJE:
+    - Build Ubuntu Focal JE
     buildUbuntuFocalTC:
     - Build Ubuntu Focal TC
     buildUbuntuFocalJE:
@@ -160,7 +210,7 @@ include:
 ojob:
   opacks      :
   - openaf: 20230907
-  catch       : printErrnl("[" + job.name + "] "); if (isDef(exception.javaException)) exception.javaException.printStackTrace(); else printErr(exception)
+  catch       : printErrnl("[" + job.name + "] "); $err(exception, __ ,true,job.exec) 
   logToConsole: true   # to change when finished
 
 jobs:
@@ -206,6 +256,32 @@ jobs:
   - Test lib
   args:
     name: buildUbuntuJE
+
+# ----------------------------
+- name: Build Ubuntu Bionic TC
+  from:
+  - (pass    ):
+      image  : "{{init.ubuntuBionic.imageTC}}"
+      cmd    : "{{{init.ubuntuBionic.buildTC}}}"
+      copyCmd: "{{{$t init.ubuntuBionic.copyTC this}}}"
+      testCmd: "{{{$t init.ubuntuBionic.testTC this}}}"
+  - Build lib
+  - Test lib
+  args:
+    name: buildUbuntuBionicTC
+
+# ----------------------------
+- name: Build Ubuntu Bionic JE
+  from:
+  - (pass    ):
+      image  : "{{init.ubuntuBionic.imageJE}}"
+      cmd    : "{{{init.ubuntuBionic.buildJE}}}"
+      copyCmd: "{{{$t init.ubuntuBionic.copyJE this}}}"
+      testCmd: "{{{$t init.ubuntuBionic.testJE this}}}"
+  - Build lib
+  - Test lib
+  args:
+    name: buildUbuntuBionicJE
 
 # ---------------------------
 - name: Build Ubuntu Focal TC
