@@ -71,7 +71,7 @@ template: &TEMPLATE |
 
       # -----------
       - name: Build
-        uses: openaf/ojob-action@v4
+        uses: openaf/ojob-action@v7
         env :
           GITHUB_TOKEN: $\{{ secrets.GITHUB_TOKEN }}
         with:
@@ -81,7 +81,7 @@ template: &TEMPLATE |
 
       # -----------------------
       - name: Clean and version
-        uses: openaf/ojob-action@v4
+        uses: openaf/ojob-action@v7
         env :
           GITHUB_TOKEN: $\{{ secrets.GITHUB_TOKEN }}
         with:
@@ -117,7 +117,7 @@ template: &TEMPLATE |
         uses: actions/download-artifact@v3
 
       - name: Create tgz and release them
-        uses: openaf/ojob-action@v4
+        uses: openaf/ojob-action@v7
         env :
           GITHUB_TOKEN: $\{{ secrets.GITHUB_TOKEN }}
         with:
