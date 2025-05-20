@@ -257,6 +257,19 @@ jobs:
   args:
     name: buildUbuntuJE
 
+# ---------------------
+- name: Build Ubuntu MI
+  from:
+  - (pass    ):
+      image  : "{{init.ubuntu.imageMI}}"
+      cmd    : "{{{init.ubuntu.buildMI}}}"
+      copyCmd: "{{{$t init.ubuntu.copyMI this}}}"
+      testCmd: "{{{$t init.ubuntu.testMI this}}}"
+  - Build lib
+  - Test lib
+  args:
+    name: buildUbuntuMI
+
 # ----------------------------
 - name: Build Ubuntu Bionic TC
   from:
@@ -336,6 +349,19 @@ jobs:
     name: buildOracle8JE
 
 # -----------------------
+- name: Build Oracle 8 MI
+  from:
+  - (pass    ):
+      image  : "{{init.oracle8.imageMI}}"
+      cmd    : "{{{init.oracle8.buildMI}}}"
+      copyCmd: "{{{$t init.oracle8.copyMI this}}}"
+      testCmd: "{{{$t init.oracle8.testMI this}}}"
+  - Build lib
+  - Test lib
+  args:
+    name: buildOracle8MI
+
+# -----------------------
 - name: Build Oracle 7 TC
   from:
   - (pass    ):
@@ -387,6 +413,19 @@ jobs:
   args:
     name: buildOracle9JE
 
+# -----------------------
+- name: Build Oracle 9 MI
+  from:
+  - (pass    ):
+      image  : "{{init.oracle9.imageMI}}"
+      cmd    : "{{{init.oracle9.buildMI}}}"
+      copyCmd: "{{{$t init.oracle9.copyMI this}}}"
+      testCmd: "{{{$t init.oracle9.testMI this}}}"
+  - Build lib
+  - Test lib
+  args:
+    name: buildOracle9MI
+
 # ------------------
 - name: Build UBI 9 JE
   from:
@@ -401,6 +440,19 @@ jobs:
     name: buildUBI9JE
 
 # --------------------
+- name: Build UBI 9 MI
+  from:
+  - (pass    ):
+      image  : "{{init.ubi9.imageMI}}"
+      cmd    : "{{{init.ubi9.buildMI}}}"
+      copyCmd: "{{{$t init.ubi9.copyMI this}}}"
+      testCmd: "{{{$t init.ubi9.testMI this}}}"
+  - Build lib
+  - Test lib
+  args:
+    name: buildUBI9MI
+
+# --------------------
 - name: Build UBI 8 JE
   from:
   - (pass    ):
@@ -412,6 +464,19 @@ jobs:
   - Test lib
   args:
     name: buildUBI8JE
+
+# --------------------
+- name: Build UBI 8 MI
+  from:
+  - (pass    ):
+      image  : "{{init.ubi8.imageMI}}"
+      cmd    : "{{{init.ubi8.buildMI}}}"
+      copyCmd: "{{{$t init.ubi8.copyMI this}}}"
+      testCmd: "{{{$t init.ubi8.testMI this}}}"
+  - Build lib
+  - Test lib
+  args:
+    name: buildUBI8MI
 
 # --------------------
 - name: Build UBI 7 JE
