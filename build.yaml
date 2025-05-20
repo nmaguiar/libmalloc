@@ -40,7 +40,7 @@ init:
 
     imageMI: oraclelinux:9 
     buildMI: yum -y -q update && yum install -y -q autoconf automake libtool gcc gcc-c++ cmake git make patch && git clone https://github.com/microsoft/mimalloc && cd mimalloc && mkdir -p out/release && cd out/release && cmake ../.. && make
-    copyMI : mkdir /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && cp -a *.so* /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && chmod a+rw /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}
+    copyMI : mkdir /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && cp -a /mimalloc/out/release/*.so* /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && chmod a+rw /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}
     testMI : yum -y -q update && yum install -y -q curl && curl https://ojob.io/get.sh | sh && LD_PRELOAD=/output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}/libmimalloc.so oaf/oaf -c 'exit(\$sh(\"grep libmimalloc.so /proc/\"+getPid()+\"/maps\").get(0).exitcode)'
 
   oracle8:
@@ -56,7 +56,7 @@ init:
 
     imageMI: oraclelinux:8.8
     buildMI: yum -y -q update && yum install -y -q autoconf automake libtool gcc gcc-c++ cmake git make patch && git clone https://github.com/microsoft/mimalloc && cd mimalloc && mkdir -p out/release && cd out/release && cmake ../.. && make
-    copyMI : mkdir /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && cp -a *.so* /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && chmod a+rw /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}
+    copyMI : mkdir /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && cp -a /mimalloc/out/release/*.so* /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && chmod a+rw /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}
     testMI : yum -y -q update && yum install -y -q curl && curl https://ojob.io/get.sh | sh && LD_PRELOAD=/output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}/libmimalloc.so oaf/oaf -c 'exit(\$sh(\"grep libmimalloc.so /proc/\"+getPid()+\"/maps\").get(0).exitcode)'
 
   oracle7:
@@ -83,7 +83,7 @@ init:
 
     imageMI: registry.access.redhat.com/ubi9/ubi-minimal
     buildMI: microdnf install -y --nodocs autoconf automake libtool make cmake gcc gcc-c++ git patch && git clone https://github.com/microsoft/mimalloc && cd mimalloc && mkdir -p out/release && cd out/release && cmake ../.. && make
-    copyMI : mkdir /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && cp -a *.so* /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && chmod a+rw /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}
+    copyMI : mkdir /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && cp -a /mimalloc/out/release/*.so* /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && chmod a+rw /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}
     testMI : microdnf install -y --nodocs findutils tar gzip && curl https://ojob.io/get.sh | sh && LD_PRELOAD=/output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}/libmimalloc.so oaf/oaf -c 'exit(\$sh(\"grep libmimalloc.so /proc/\"+getPid()+\"/maps\").get(0).exitcode)'
 
   ubi8:
@@ -99,7 +99,7 @@ init:
 
     imageMI: registry.access.redhat.com/ubi8/ubi-minimal
     buildMI: microdnf install -y --nodocs autoconf automake libtool make cmake gcc gcc-c++ git patch && git clone https://github.com/microsoft/mimalloc && cd mimalloc && mkdir -p out/release && cd out/release && cmake ../.. && make
-    copyMI : mkdir /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && cp -a *.so* /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && chmod a+rw /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}
+    copyMI : mkdir /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && cp -a /mimalloc/out/release/*.so* /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && chmod a+rw /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}
     testMI : microdnf install -y --nodocs findutils tar gzip && curl https://ojob.io/get.sh | sh && LD_PRELOAD=/output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}/libmimalloc.so oaf/oaf -c 'exit(\$sh(\"grep libmimalloc.so /proc/\"+getPid()+\"/maps\").get(0).exitcode)'
 
   ubi7:
@@ -126,7 +126,7 @@ init:
 
     imageMI: ubuntu:plucky
     buildMI: apt-get update && apt-get install -y autoconf automake libtool cmake make gcc g++ git patch && git clone https://github.com/microsoft/mimalloc && cd mimalloc && mkdir -p out/release && cd out/release && cmake ../.. && make
-    copyMI : mkdir /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && cp -a *.so* /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && chmod a+rw /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}
+    copyMI : mkdir /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && cp -a /mimalloc/out/release/*.so* /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && chmod a+rw /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}
     testMI : apt-get update && apt-get install -y curl && curl https://ojob.io/get.sh | sh && LD_PRELOAD=/output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}/libtcmalloc_minimal.so oaf/oaf -c 'exit(\$sh(\"grep libtcmalloc_minimal.so /proc/\"+getPid()+\"/maps\").get(0).exitcode)'
 
   ubuntuBionic:
