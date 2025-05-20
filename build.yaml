@@ -27,6 +27,11 @@ init:
     copyJE : mkdir /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && cp -a lib/*.so* /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && chmod a+rw /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}
     testJE : apk update && apk --no-cache add curl tar gzip openjdk17 bash && curl https://ojob.io/get.sh | sh && LD_PRELOAD=/output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}/libjemalloc.so oaf/oaf -c 'exit(\$sh(\"grep libjemalloc.so /proc/\"+getPid()+\"/maps\").get(0).exitcode)'
 
+    imageMI: alpine
+    buildMI: apk update && apk --no-cache add autoconf automake libtool make gcc musl-dev g++ git patch cmake && git clone https://github.com/microsoft/mimalloc && cd mimalloc && mkdir -p out/release && cd out/release && cmake ../.. && make
+    copyMI : mkdir /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && cp -a /mimalloc/out/release/*.so* /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}} && chmod a+rw /output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}
+    testMI : yum -y -q update && yum install -y -q curl && curl https://ojob.io/get.sh | sh && LD_PRELOAD=/output/{{#if output}}{{output}}{{else}}{{name}}{{/if}}/libmimalloc.so oaf/oaf -c 'exit(\$sh(\"grep libmimalloc.so /proc/\"+getPid()+\"/maps\").get(0).exitcode)'
+
   oracle9:
     imageTC: oraclelinux:9
     buildTC: yum -y -q update && yum install -y -q autoconf automake libtool gcc gcc-c++ git make patch && git clone https://github.com/gperftools/gperftools && cd gperftools && sh autogen.sh && sh configure && make
@@ -173,6 +178,8 @@ todo:
     - Build Alpine JE
     buildAlpineTC:
     - Build Alpine TC
+    buildAlpineMI:
+    - Build Alpine MI
     buildOracle8TC:
     - Build Oracle 8 TC
     buildOracle8JE:
@@ -219,7 +226,7 @@ jobs:
   lang: shell
   typeArgs:
     shellPrefix : build
-  exec: |
+  exec: | #shell
     rm -rf {{name}}
     docker run --rm -i -v `pwd`:/output {{#if arch}}--platform linux/{{arch}}{{/if}} {{image}} /bin/sh -c "{{{cmd}}} && {{{copyCmd}}}"
 
@@ -228,7 +235,7 @@ jobs:
   lang: shell
   typeArgs:
     shellPrefix : test
-  exec: |
+  exec: | #shell
     docker run --rm -i -v `pwd`:/output {{#if arch}}--platform linux/{{arch}}{{/if}} {{image}} /bin/sh -c "{{{testCmd}}}"
 
 # ---------------------
@@ -542,3 +549,16 @@ jobs:
   - Test lib
   args:
     name: buildAlpineTC
+
+# ---------------------
+- name: Build Alpine MI
+  from:
+  - (pass    ):
+      image  : "{{init.alpine.imageMI}}"
+      cmd    : "{{{init.alpine.buildMI}}}"
+      copyCmd: "{{{$t init.alpine.copyMI this}}}"
+      testCmd: "{{{$t init.alpine.testMI this}}}"
+  - Build lib
+  - Test lib
+  args:
+    name: buildAlpineMI
