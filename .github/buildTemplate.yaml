@@ -56,7 +56,7 @@ template: &TEMPLATE |
       - name: Cache OpenAF runtime
         uses: actions/cache@v4
         with:
-          key : oaf-t8
+          key : oaf-t8{{#$is arch 'arm64'}}-arm64{{else}}-x64{{/$is}}
           path: /tmp/oaf
 
       # --------------
