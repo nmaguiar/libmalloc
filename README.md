@@ -1,6 +1,6 @@
 # libmalloc
 
-Binaries Linux builds of the libtcmalloc and the libjemalloc libraries.
+Binaries Linux builds of the libtcmalloc, libjemalloc and the libmimalloc libraries.
 
 ## Download
 
