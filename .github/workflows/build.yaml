@@ -1464,6 +1464,101 @@ jobs:
         path: buildAlpineTC
 
   # ============
+  buildAlpineMIamd64:
+    runs-on: ubuntu-latest
+    permissions:
+      contents     : write
+      pull-requests: write
+
+    steps  :
+    - name: Cache OpenAF runtime
+      uses: actions/cache@v4
+      with:
+        key : oaf-t8-x64
+        path: /tmp/oaf
+
+    # --------------
+    - name: Checkout
+      uses: actions/checkout@v4
+
+
+    # -----------
+    - name: Build
+      uses: openaf/ojob-action@v7
+      env :
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        ojob: build.yaml
+        args: 'op=buildAlpineMI arch=amd64'
+        dist: t8
+
+    # -----------------------
+    - name: Clean and version
+      uses: openaf/ojob-action@v7
+      env :
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        ojob: cleanAndVersion.yaml
+        args: 'path=buildAlpineMI'
+        dist: t8
+
+    # -------------------
+    - name: Upload output
+      uses: actions/upload-artifact@v4
+      with:
+        name: libmimalloc-${{ env.version }}-alpine-x64
+        path: buildAlpineMI
+
+  # ============
+  buildAlpineMIarm64:
+    runs-on: ubuntu-24.04-arm
+    permissions:
+      contents     : write
+      pull-requests: write
+
+    steps  :
+    - name: Cache OpenAF runtime
+      uses: actions/cache@v4
+      with:
+        key : oaf-t8-arm64
+        path: /tmp/oaf
+
+    # --------------
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    # -----------------
+    #- name: Set up QEMU
+    #  uses: docker/setup-qemu-action@v2
+
+    # -----------
+    - name: Build
+      uses: openaf/ojob-action@v7
+      env :
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        ojob: build.yaml
+        args: 'op=buildAlpineMI arch=arm64'
+        dist: t8
+
+    # -----------------------
+    - name: Clean and version
+      uses: openaf/ojob-action@v7
+      env :
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        ojob: cleanAndVersion.yaml
+        args: 'path=buildAlpineMI'
+        dist: t8
+
+    # -------------------
+    - name: Upload output
+      uses: actions/upload-artifact@v4
+      with:
+        name: libmimalloc-${{ env.version }}-alpine-aarch64
+        path: buildAlpineMI
+
+  # ============
   buildOracle7JEamd64:
     runs-on: ubuntu-latest
     permissions:
@@ -1877,6 +1972,8 @@ jobs:
     - buildAlpineJEarm64
     - buildAlpineTCamd64
     - buildAlpineTCarm64
+    - buildAlpineMIamd64
+    - buildAlpineMIarm64
     - buildOracle7JEamd64
     - buildOracle7JEarm64
     - buildOracle8JEamd64
